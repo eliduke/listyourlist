@@ -1,0 +1,40 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user {
+
+  h2 {
+    background-color: white;
+    font-size: 600%;
+    margin: 0;
+  }
+
+  h4 {
+    background-color: white;
+    color: #ccc;
+    font-size: 250%;
+    margin: -10px 0 0 0;
+  }
+
+  ul.list-unstyled li {
+    font-size: 200%;
+  }
+
+}
+
+#users {
+
+  th.stat, td.stat {
+    text-align:center;
+    width: 15%;
+  }
+
+  thead tr th {
+    background-color: #222;
+    color: #eee;
+    border-bottom: 2px solid #fcf;
+    font-size: 120%;
+  }
+
+}

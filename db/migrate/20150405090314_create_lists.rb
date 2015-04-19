@@ -3,10 +3,10 @@ class CreateLists < ActiveRecord::Migration
     create_table :lists do |t|
       t.integer :user_id
       t.string :title
-      t.text :description
       t.boolean :ordered
-      t.boolean :published
-
+      t.text :description
+      t.boolean :published, default: :false
+      t.integer :hits
       t.timestamps null: false
     end
   end

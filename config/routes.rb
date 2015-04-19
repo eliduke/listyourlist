@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  root 'home#index'
+
+  # devise_for :users
+
+  resources :lists
+
+  get 'about', to: 'home#about', as: :about
+
+  get 'users', to: 'users#index', as: :users
+  get 'users/seed', to: 'users#seed', as: :user_seed
+  get ':login', to: 'users#show', as: :user
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -13,7 +24,6 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do

@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-sm-4 col-md-4 col-lg-4">
+		<h3>New Lists</h3>
+		<ul class="list_of_lists">
+      <% lists_new.each do |list| %>
+        <li><%= link_to list.title, list_path(list) %></li>
+      <% end %>
+		</ul>
+	</div>
+	<div class="col-sm-4 col-md-4 col-lg-4">
+		<h3>Recent Activity</h3>
+		<ul class="list_of_lists">
+      <% lists_activity.each do |list| %>
+        <li><%= link_to list.title, list_path(list) %></li>
+      <% end %>
+		</ul>
+	</div>
+	<div class="col-sm-4 col-md-4 col-lg-4">
+		<h3>Most Popular</h3>
+		<ul class="list_of_lists">
+      <% lists_popular.each do |list| %>
+        <li><%= link_to list.title, list_path(list) %></li>
+      <% end %>
+		</ul>
+	</div>
+</div>

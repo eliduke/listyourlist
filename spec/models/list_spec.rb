@@ -2,22 +2,27 @@ require 'rails_helper'
 
 RSpec.describe List, type: :model do
 
-  context "validations :" do
+  context "associations :" do
 
-    let(:list) { FactoryGirl.create(:list) }
+    before(:all) do
+      @user = FactoryGirl.create(:user)
+      @list = FactoryGirl.create(:list, user_id: @user.id)
+    end
 
-    it "list is valid" do
-      expect(list).to be_valid
+    it "belongs to a user" do
+      expect(@list.user).to eq @user
     end
 
     it "has many items" do
-      items = FactoryGirl.create_list(:item, 5, list: list)
-      expect(list.items.size).to eq 5
+      items = FactoryGirl.create_list(:item, 5)
+      @list.items << items
+      expect(@list.items).to eq items
     end
 
     it "has many comments" do
-      items = FactoryGirl.create_list(:comment, 3, list: list)
-      expect(list.comments.size).to eq 3
+      comments = FactoryGirl.create_list(:comment, 3)
+      @list.comments << comments
+      expect(@list.comments).to eq comments
     end
 
   end

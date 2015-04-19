@@ -1,0 +1,44 @@
+# USERS<br/>
+[<br />
+<% @users.each do |user| %>
+&nbsp;&nbsp;{ id:  <%= user.id %>, login: "<%= user.login %>", email: "<%= user.email %>", location: "<%= user.location %>", url: "<%= user.url %>", bio: "<%= user.bio %>", full_name: "<%= user.full_name %>", display_name: "<%= user.display_name %>" },<br />
+<% end %>
+].each do |user|<br />
+&nbsp;&nbsp;User.create!(user)<br />
+end<br />
+<br />
+# LISTS<br/>
+[<br />
+<% @lists.each do |list| %>
+&nbsp;&nbsp;{ id: <%= list.id %>, user_id: <%= list.user_id %>, title: %^<%= list.title %>^, description: %^<%= list.description %>^, published: <%= list.published %>, ordered: <%= list.ordered %>, hits: <%= list.hits %>, created_at: "<%= list.created_at %>", updated_at: "<%= list.updated_at %>") },<br />
+<% end %>
+].each do |list|<br />
+&nbsp;&nbsp;List.create!(list)<br />
+end<br />
+<br />
+# ITEMS<br/>
+[<br />
+<% @items.each do |item| %>
+&nbsp;&nbsp;{ id: <%= item.id %>, list_id: <%= item.list_id %>, body: %^<%= item.name %>^, position: <%= item.position %> },<br />
+<% end %>
+].each do |item|<br />
+&nbsp;&nbsp;Item.create!(item)<br />
+end<br />
+<br />
+# COMMENTS<br/>
+[<br />
+<% @comments.each do |comment| %>
+&nbsp;&nbsp;{ id: <%= comment.id %>, user_id: <%= comment.user_id %>, list_id: <%= comment.list_id %>, body: %^<%= comment.body %>^, created_at: "<%= comment.created_at %>" },<br />
+<% end %>
+].each do |item|<br />
+&nbsp;&nbsp;Item.create!(item)<br />
+end<br />
+<br />
+# LIKES<br/>
+[<br />
+<% @likes.each do |like| %>
+&nbsp;&nbsp;{ id: <%= like.id %>, user_id: <%= like.user_id %>, list_id: <%= like.list_id %>, created_at: "<%= like.created_at %>" },<br />
+<% end %>
+].each do |like|<br />
+&nbsp;&nbsp;Like.create!(like)<br />
+end<br />

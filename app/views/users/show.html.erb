@@ -1,0 +1,20 @@
+<div id="user">
+  <div class="row">
+    <div class="col-sm-6">
+      <ul class="list-unstyled">
+        <li><%= @user.full_name ? @user.full_name : @user.login %></li>
+        <li><%= @user.location %></li>
+        <li><%= link_to @user.url, @user.url, target: "_blank" if @user.url %></li>
+        <li><%= @user.bio %></li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+  		<h3><%= @user.login %></h3>
+  		<ul class="list_of_lists">
+        <% @user.lists.order(created_at: :desc).each do |list| %>
+          <li><%= link_to list.title, list_path(list) %></li>
+        <% end %>
+  		</ul>
+    </div>
+  </div>
+</div>

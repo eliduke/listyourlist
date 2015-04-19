@@ -1,3 +1,37 @@
 // Place all the styles related to the Lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea {
+  margin-top: 20px;
+}
+
+#list {
+
+  h2 {
+    margin-top: 0;
+  }
+
+}
+
+#lists {
+
+  th.stat, td.stat {
+    text-align: center;
+    width: 15%;
+  }
+
+  thead tr th {
+    background-color: #222;
+    color: #eee;
+    border-bottom: 2px solid #fcf;
+    font-size: 120%;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .stat { display: none }
+  h2 { font-size: 170% }
+  .single_list li { margin-left: -20px }
+}
