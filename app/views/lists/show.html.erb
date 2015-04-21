@@ -26,9 +26,9 @@
       <% end %>
   	</div>
   	<div class="col-sm-4 col-md-4 col-lg-4">
-  		<h3><%= @list.user.login %>'s lists</h3>
+  		<h3><%= @list.user.login %></h3>
   		<ul class="list_of_lists">
-        <% @list.user.lists.last(10).reverse.each do |list| %>
+        <% @list.user.lists.reverse.each do |list| %>
           <li><%= link_to list.title, list_path(list) %></li>
         <% end %>
   		</ul>
