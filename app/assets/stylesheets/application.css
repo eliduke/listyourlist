@@ -38,7 +38,7 @@ h1 {
 	margin-bottom: 60px;
 }
 
-p, li { font-size: 115% }
+p, li, td { font-size: 115% }
 
 @media (max-width: 767px) {
 	h1 {
