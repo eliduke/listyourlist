@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
   def index
+    @title = "All Users"
     @users = User.all.order(:login)
   end
 
   def show
     @user = User.find_by(login: params[:login])
+    @title = @user.login
   end
 
   def seed
