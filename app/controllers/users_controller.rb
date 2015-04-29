@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   end
 
   def seed
-    @users    = User.order(:id)
+    @users    = User.unscoped.order(:id)
     @lists    = List.unscoped.order(:id)
     @items    = Item.unscoped.order(:id)
-    @comments = Comment.order(:id)
-    @likes    = Like.order(:id)
+    @comments = Comment.unscoped.order(:id)
+    @likes    = Like.unscoped.order(:id)
 
     render layout: false
   end

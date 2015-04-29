@@ -31,7 +31,7 @@ end<br />
 &nbsp;&nbsp;{ id: <%= comment.id %>, user_id: <%= comment.user_id %>, list_id: <%= comment.list_id %>, body: %^<%= comment.body %>^, created_at: "<%= comment.created_at %>", deleted: <%= comment.deleted %> },<br />
 <% end %>
 ].each do |item|<br />
-&nbsp;&nbsp;Item.create!(item)<br />
+&nbsp;&nbsp;Comment.create!(item)<br />
 end<br />
 <br />
 # LIKES<br/>
