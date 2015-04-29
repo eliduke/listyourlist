@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="<%= @list ? "List: #{@list.title}" : @title %>">
+    <meta name="author" content="<%= @list.user.full_name if @list %>">
 
     <title>ListYourList : <%= @title %></title>
 

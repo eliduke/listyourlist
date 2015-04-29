@@ -11,7 +11,7 @@
     <tbody>
       <% @users.each do |user| %>
           <tr>
-            <td><%= link_to user.login, user_path(user.login) %></td>
+            <td><%= link_to user.login, profile_path(user.login) %></td>
             <td class="stat"><%= user.lists.size %></td>
             <td class="stat"><%= user.comments.size %></td>
             <td class="stat"><%= user.likes.size %></td>
