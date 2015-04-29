@@ -1,7 +1,7 @@
 # USERS<br/>
 [<br />
 <% @users.each do |user| %>
-&nbsp;&nbsp;{ id:  <%= user.id %>, login: "<%= user.login %>", email: "<%= user.email %>", location: "<%= user.location %>", url: "<%= user.url %>", bio: "<%= user.bio %>", full_name: "<%= user.full_name %>", display_name: "<%= user.display_name %>" },<br />
+&nbsp;&nbsp;{ id:  <%= user.id %>, login: "<%= user.login %>", email: "<%= user.email %>", location: "<%= user.location %>", url: "<%= user.url %>", bio: "<%= user.bio %>", full_name: "<%= user.full_name %>", display_name: "<%= user.display_name %>", deleted: <%= user.deleted %> },<br />
 <% end %>
 ].each do |user|<br />
 &nbsp;&nbsp;User.create!(user)<br />
@@ -10,7 +10,7 @@ end<br />
 # LISTS<br/>
 [<br />
 <% @lists.each do |list| %>
-&nbsp;&nbsp;{ id: <%= list.id %>, user_id: <%= list.user_id %>, title: %^<%= list.title %>^, description: %^<%= list.description %>^, published: <%= list.published %>, ordered: <%= list.ordered %>, hits: <%= list.hits %>, created_at: "<%= list.created_at %>", updated_at: "<%= list.updated_at %>") },<br />
+&nbsp;&nbsp;{ id: <%= list.id %>, user_id: <%= list.user_id %>, title: %^<%= list.title %>^, description: %^<%= list.description %>^, published: <%= list.published %>, ordered: <%= list.ordered %>, hits: <%= list.hits %>, created_at: "<%= list.created_at %>", updated_at: "<%= list.updated_at %>", deleted: <%= list.deleted %> },<br />
 <% end %>
 ].each do |list|<br />
 &nbsp;&nbsp;List.create!(list)<br />
@@ -19,7 +19,7 @@ end<br />
 # ITEMS<br/>
 [<br />
 <% @items.each do |item| %>
-&nbsp;&nbsp;{ id: <%= item.id %>, list_id: <%= item.list_id %>, body: %^<%= item.name %>^, position: <%= item.position %> },<br />
+&nbsp;&nbsp;{ id: <%= item.id %>, list_id: <%= item.list_id %>, body: %^<%= item.body %>^, position: <%= item.position %> },<br />
 <% end %>
 ].each do |item|<br />
 &nbsp;&nbsp;Item.create!(item)<br />
@@ -28,7 +28,7 @@ end<br />
 # COMMENTS<br/>
 [<br />
 <% @comments.each do |comment| %>
-&nbsp;&nbsp;{ id: <%= comment.id %>, user_id: <%= comment.user_id %>, list_id: <%= comment.list_id %>, body: %^<%= comment.body %>^, created_at: "<%= comment.created_at %>" },<br />
+&nbsp;&nbsp;{ id: <%= comment.id %>, user_id: <%= comment.user_id %>, list_id: <%= comment.list_id %>, body: %^<%= comment.body %>^, created_at: "<%= comment.created_at %>", deleted: <%= comment.deleted %> },<br />
 <% end %>
 ].each do |item|<br />
 &nbsp;&nbsp;Item.create!(item)<br />

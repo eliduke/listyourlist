@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150429022154) do
     t.integer  "user_id"
     t.integer  "list_id"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "deleted"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "deleted",    default: false, null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150429022154) do
     t.integer  "hits"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.boolean  "deleted"
+    t.boolean  "deleted",     default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150429022154) do
     t.string  "location"
     t.string  "url"
     t.string  "bio"
-    t.boolean "deleted"
+    t.boolean "deleted",      default: false, null: false
   end
 
 end
