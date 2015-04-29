@@ -268,7 +268,7 @@ ul.comments li:nth-child(even) {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #f9f;
+  border-color: #222;
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -277,19 +277,19 @@ ul.comments li:nth-child(even) {
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #ffffff;
+  background-color: #f9f;
 }
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #f9f;
+  border-color: #222;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #ffffff;
-  background-color: #080808;
+  background-color: #fff;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
