@@ -42,7 +42,15 @@
         </div>
 
         <%= f.hidden_field :user_id, value: 1 %>
-        <%= f.submit "LIST IT", :class => "btn btn-lg btn-listyourlist btn-block" %>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <%= f.submit "SAVE DRAFT", :class => "btn btn-lg btn-draft" %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.submit "PUBLISH LIST", :class => "btn btn-lg btn-publish" %>
+          </div>
+        </div>
 
       <% end %>
     </div>

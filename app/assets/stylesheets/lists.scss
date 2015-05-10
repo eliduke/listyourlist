@@ -21,8 +21,8 @@
   }
 
   thead tr th {
-    background-color: #222;
-    color: #eee;
+    background-color: #333;
+    color: #fff;
     border-bottom: 2px solid #fcf;
     font-size: 120%;
   }
@@ -31,7 +31,7 @@
 
 #new_list {
 
-  h3 {
+  h3:first-of-type {
     background: #f9f;
     color: #fff;
   }
@@ -44,7 +44,7 @@
     margin-left: -15px;
   }
 
-  input[type=submit] {
+  input[type=submit]:last-of-type {
     margin-bottom: 30px;
   }
 
@@ -54,6 +54,11 @@
 
   .hints {
     p { color: #999 }
+
+    h3 {
+      background: #666;
+      color: #fff;
+    }
   }
 
   .settings {
@@ -102,6 +107,7 @@
   .stat { display: none }
   h2 { font-size: 170% }
   .single_list li { margin-left: -20px }
+
   #new_list{
     .settings{
       ul,ol {
@@ -110,4 +116,5 @@
       }
     }
   }
+
 }

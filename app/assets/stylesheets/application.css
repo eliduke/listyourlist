@@ -85,8 +85,8 @@ textarea, input {
 h3, h4 {
   margin-top: 0;
 	padding: 10px;
-	color: #eee;
-	background: #222;
+	color: #fff;
+	background: #333;
 }
 
 p.description {
@@ -156,13 +156,13 @@ ul.list_of_lists li:nth-child(even) a {
 }
 
 ul.list_of_lists li:nth-child(odd) a:hover {
-	color: #eee;
-	background-color: #333;
+	color: #fff;
+	background-color: #666;
 }
 
 ul.list_of_lists li:nth-child(even) a:hover {
-	color: #eee;
-	background-color: #333;
+	color: #fff;
+	background-color: #666;
 }
 
 ul.comments {
@@ -226,12 +226,12 @@ ul.comments li:nth-child(even) {
 }
 
 .navbar-inverse {
-  background-color: #222;
+  background-color: #333;
   border-bottom: 2px solid #f9f;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #eee;
+  color: #fff;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -250,7 +250,7 @@ ul.comments li:nth-child(even) {
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #eee;
+  color: #fff;
   background-color: #333;
 }
 
@@ -280,7 +280,7 @@ ul.comments li:nth-child(even) {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #222;
+  border-color: #333;
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -294,7 +294,7 @@ ul.comments li:nth-child(even) {
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #222;
+  border-color: #333;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -355,24 +355,46 @@ ul.comments li:nth-child(even) {
   color: #ffffff;
 }
 
-.btn-listyourlist {
+.btn-publish {
   color: #fff;
   background-color: #f9f;
+  width: 100%;
 }
 
-.btn-listyourlist:hover,
-.btn-listyourlist:focus,
-.btn-listyourlist:active,
-.btn-listyourlist.active,
-.open .dropdown-toggle.btn-listyourlist {
-  color: #eee;
+.btn-publish:hover,
+.btn-publish:focus,
+.btn-publish:active,
+.btn-publish.active,
+.open .dropdown-toggle.btn-publish {
+  color: #fff;
   background-color: #f6f;
   border-color: #f9f;
 }
 
-.btn-listyourlist:active,
-.btn-listyourlist.active,
-.open .dropdown-toggle.btn-listyourlist {
+.btn-publish:active,
+.btn-publish.active,
+.open .dropdown-toggle.btn-publish {
+  background-image: none;
+}
+
+.btn-draft {
+  color: #fff;
+  background-color: #666;
+  width: 100%;
+}
+
+.btn-draft:hover,
+.btn-draft:focus,
+.btn-draft:active,
+.btn-draft.active,
+.open .dropdown-toggle.btn-draft {
+  color: #fff;
+  background-color: #333;
+}
+
+.btn-draft:active,
+.btn-draft.active,
+.open .dropdown-toggle.btn-draft {
   background-image: none;
 }
 
