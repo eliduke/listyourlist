@@ -102,4 +102,12 @@
   .stat { display: none }
   h2 { font-size: 170% }
   .single_list li { margin-left: -20px }
+  #new_list{
+    .settings{
+      ul,ol {
+        font-size: 100%;
+        margin-left: 0;
+      }
+    }
+  }
 }
