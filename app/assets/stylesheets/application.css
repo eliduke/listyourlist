@@ -14,6 +14,12 @@
  *= require_self
  */
 
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
 body {
   padding-top: 55px;
 }
