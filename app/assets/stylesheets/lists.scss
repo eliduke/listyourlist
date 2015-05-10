@@ -2,16 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-textarea {
-  margin-top: 20px;
-}
-
 #list {
 
   h2 {
     margin-top: 0;
   }
 
+  textarea {
+    margin-top: 20px;
+  }
 }
 
 #lists {
@@ -26,6 +25,70 @@ textarea {
     color: #eee;
     border-bottom: 2px solid #fcf;
     font-size: 120%;
+  }
+
+}
+
+#new_list {
+
+  li {
+    margin: 20px 0;
+  }
+
+  ol, ul {
+    margin-left: -15px;
+  }
+
+  input[type=submit] {
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    display: inline;
+  }
+
+  .hints {
+    p { color: #999 }
+  }
+
+  .settings {
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #f9f;
+    }
+
+    .type {
+      background: #eee;
+      margin-bottom: 10px;
+      padding: 1px;
+      cursor: pointer;
+    }
+
+    .type:hover {
+      color: #f9f;
+    }
+
+    .selected {
+      background: #f9f;
+      color: #fff;
+    }
+
+    .selected:hover {
+      color: #fff;
+      cursor: default;
+    }
+
+    ul, ol {
+      font-size: 150%;
+      margin-left: 30px;
+    }
   }
 
 }

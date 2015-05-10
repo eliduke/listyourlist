@@ -3,11 +3,11 @@
   	<div class="col-sm-8 col-md-8 col-lg-6 col-lg-offset-1">
   		<h2><%= @list.title %></h2>
   		<p class="description"><%= @list.description %></p>
-  		<ul class="single_list">
+  		<<%= @list.ordered ? "o" : "u" %>l class="single_list">
         <% @list.items.each do |item| %>
           <li><%= item.body %></li>
         <% end %>
-  		</ul>
+  		</<%= @list.ordered ? "o" : "u" %>l>
   		<p class="listed_by">Listed by <%= link_to @list.user.login, profile_path(@list.user.login) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %></p>
       <% if @list.comments.present? %>
     		<h4>Comments</h4>

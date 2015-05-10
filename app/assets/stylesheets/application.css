@@ -38,7 +38,13 @@ h1 {
 	margin-bottom: 60px;
 }
 
-p, li, td { font-size: 115% }
+p, li, td, label { font-size: 115% }
+
+th {font-size: 170% }
+
+textarea, input {
+  margin: 0;
+}
 
 @media (max-width: 767px) {
 	h1 {
@@ -344,9 +350,8 @@ ul.comments li:nth-child(even) {
 }
 
 .btn-listyourlist {
-  color: #333;
+  color: #fff;
   background-color: #f9f;
-  border-color: #f6f;
 }
 
 .btn-listyourlist:hover,

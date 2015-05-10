@@ -4,6 +4,8 @@ class List < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
+  accepts_nested_attributes_for :items, reject_if: proc { |params| params['body'].blank? }
+
   validates :title, presence: true
   validates :user_id, presence: true
 

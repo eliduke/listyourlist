@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  # devise_for :users
-
   resources :lists
 
   get 'about', to: 'home#about', as: :about

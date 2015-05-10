@@ -10,4 +10,10 @@ class ListsController < ApplicationController
     @title = "##{@list.id} - #{@list.title}"
   end
 
+  def new
+    @title = "New List"
+    @list = List.new
+    @list.items.build
+  end
+
 end
