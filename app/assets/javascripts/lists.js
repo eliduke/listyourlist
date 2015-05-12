@@ -36,7 +36,7 @@ $(document).ready(function(){
     }
   });
 
-  $("form #list_items li:last").keydown(function (e) {
+  $("form").keydown(function (e) {
     if (e.keyCode == 13) {
       inputs = $("#list_items li");
       new_input = '<li><input class="form-control input-lg" placeholder="Type and Press ENTER" type="text" name="list[item]" id="list_item_' + (inputs.length + 1) + '" /></li>';
