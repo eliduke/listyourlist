@@ -14,5 +14,5 @@ class List < ActiveRecord::Base
   validates_associated :items
   validates_associated :comments
 
-  default_scope { where(deleted: false).where(published: true) }
+  default_scope { where(deleted: false, published: true) }
 end
