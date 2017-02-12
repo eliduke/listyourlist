@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429022154) do
+ActiveRecord::Schema.define(version: 20170212074701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20150429022154) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "deleted",     default: false, null: false
+    t.string   "permalink"
   end
+
+  add_index "lists", ["permalink"], name: "index_lists_on_permalink", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string  "login"

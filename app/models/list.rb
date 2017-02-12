@@ -4,6 +4,8 @@ class List < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
+  has_permalink
+
   accepts_nested_attributes_for :items, reject_if: proc { |params| params['body'].blank? }
 
   validates :title, presence: true
@@ -13,8 +15,4 @@ class List < ActiveRecord::Base
   validates_associated :comments
 
   default_scope { where(deleted: false).where(published: true) }
-
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
 end

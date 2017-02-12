@@ -6,8 +6,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
-    @title = "##{@list.id} - #{@list.title}"
+    @list = List.find_by(permalink: params[:id])
+    @title = "#{@list.title} / #{@list.user.login}"
   end
 
   def new
