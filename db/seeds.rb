@@ -1,6 +1,6 @@
 # USERS
 [
-  { id: 1, login: "eliduke", email: "elisfanclub@gmail.com", location: "Portland, OR", url: "http://eliduke.com", bio: "Obnoxiously Idealistic", full_name: "Eli Duke", display_name: "eliduke", deleted: false },
+  { id: 1, login: "eliduke", email: "elisfanclub@gmail.com", location: "Portland, OR", url: "http://eliduke.com", bio: "Obnoxiously Idealistic", full_name: "Eli Duke", display_name: "eliduke", deleted: false, password: "poop", password_confirmation: "poop" },
   { id: 2, login: "veganstraightedge", email: "veganstraightedge@gmail.com", location: "Los Angeles, CA", url: "http://iamshane.com", bio: "still vegan. still straightedge. and baby, i'm an anarchist.", full_name: "Shane Becker", display_name: "veganstraightedge", deleted: false },
   { id: 3, login: "bookis", email: "vegan.bookis@gmail.com", location: "your house, Seattle", url: "http://www.iambookis.com", bio: "I am Bookis.", full_name: "bookis smuin", display_name: "Bookis", deleted: false },
   { id: 4, login: "petetheox", email: "pmhuff@gmail.com", location: "the house next door", url: "", bio: "", full_name: "", display_name: "petetheox", deleted: false },
@@ -11,7 +11,7 @@
   { id: 9, login: "roxylola", email: "missroxylola@gmail.com", location: "98105", url: "", bio: "", full_name: "", display_name: "roxylola", deleted: false },
   { id: 10, login: "chocolate", email: "choclazz@gmail.com", location: "Seattle, WA", url: "", bio: "", full_name: "", display_name: "Chocolate", deleted: false },
   { id: 11, login: "worstdukeever", email: "worstdukeever@gmail.com", location: "98105", url: "", bio: "", full_name: "", display_name: "worstdukeever", deleted: false },
-  { id: 12, login: "b twinkle", email: "bjtroy@gmail.com", location: "98103", url: "", bio: "", full_name: "", display_name: "B Twinkle", deleted: false },
+  { id: 12, login: "btwinkle", email: "bjtroy@gmail.com", location: "98103", url: "", bio: "", full_name: "", display_name: "B Twinkle", deleted: false },
   { id: 13, login: "andyman", email: "andykbrennan@gmail.com", location: "46062 Bloomington, IN", url: "", bio: "", full_name: "", display_name: "Andyman", deleted: false },
   { id: 14, login: "alex", email: "positivelypositive@gmail.com", location: "84012", url: "", bio: "", full_name: "", display_name: "Alex", deleted: false },
   { id: 15, login: "pakman2", email: "Dabomb4095@aol.com", location: "98105", url: "", bio: "", full_name: "", display_name: "pakman2", deleted: false },
@@ -96,7 +96,7 @@
   { id: 96, login: "oddlyzen", email: "mark.coates@gmail.com", location: "NYC", url: "http://oddlyzen.com", bio: "Software visionary, geek, writer. Works for conEdison, the company powering NYC. Editor at Rails Magazine.", full_name: "Mark Coates", display_name: "oddlyzen", deleted: false },
   { id: 97, login: "sampg", email: "samanthajpg24@yahoo.co.uk", location: "", url: "", bio: "", full_name: "", display_name: "samPG", deleted: false },
   { id: 98, login: "fightforyourmind", email: "tacobunny2@msn.com", location: "Paoli, PA", url: "", bio: "I'm 21, I love music, making lists, writing random stuff down, meeting new people. ", full_name: "Bruce Yockey", display_name: "fightforyourmind", deleted: false },
-  { id: 99, login: "polythene pam", email: "cyan14@yahoo.com", location: "Ohio", url: "", bio: "", full_name: "Isabelle Hamilton", display_name: "Polythene Pam", deleted: false },
+  { id: 99, login: "polythenepam", email: "cyan14@yahoo.com", location: "Ohio", url: "", bio: "", full_name: "Isabelle Hamilton", display_name: "Polythene Pam", deleted: false },
   { id: 100, login: "fradelos", email: "frayanakis@hotmail.com", location: "", url: "", bio: "", full_name: "", display_name: "fradelos", deleted: false },
   { id: 101, login: "kimikat92", email: "Kimikat92@yahoo.com", location: "", url: "", bio: "", full_name: "", display_name: "Kimikat92", deleted: false },
   { id: 102, login: "c91329", email: "chrismcknight.98@gmail.com", location: "", url: "", bio: "singer-songwriter, poet, writer, missionary", full_name: "Chris McKnight", display_name: "c91329", deleted: false },
@@ -113,8 +113,9 @@
   { id: 113, login: "saedae", email: "shadae@outlook.com", location: "Seattle", url: "", bio: "", full_name: "dae", display_name: "saedae", deleted: false },
   { id: 114, login: "pharmg601", email: "johng323@aol.com", location: "Pharmg601", url: "http://oieypxa1.com/oryayqr/5.html", bio: " Hello! eadfkeg interesting eadfkeg site! I'm really like it! Very, very eadfkeg good! ", full_name: "Pharmg601", display_name: "Pharmg601", deleted: false },
   { id: 115, login: "menina84", email: "meninaloura@gmail.com", location: "", url: "", bio: "", full_name: "", display_name: "menina84", deleted: false }
-].each do |user|
-  User.create!(user)
+].each do |user_params|
+  user = User.new(user_params)
+  user.save(validate: false)
 end
 
 # LISTS
@@ -7482,3 +7483,11 @@ end
 ].each do |like|
   Like.create!(like)
 end
+
+connection = ActiveRecord::Base.connection
+
+connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH #{User.unscoped.order(:id).last.id + 1}")
+connection.execute("ALTER SEQUENCE lists_id_seq RESTART WITH #{List.unscoped.order(:id).last.id + 1}")
+connection.execute("ALTER SEQUENCE items_id_seq RESTART WITH #{Item.unscoped.order(:id).last.id + 1}")
+connection.execute("ALTER SEQUENCE comments_id_seq RESTART WITH #{Comment.unscoped.order(:id).last.id + 1}")
+connection.execute("ALTER SEQUENCE likes_id_seq RESTART WITH #{Like.unscoped.order(:id).last.id + 1}")
