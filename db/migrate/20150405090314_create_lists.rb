@@ -5,7 +5,7 @@ class CreateLists < ActiveRecord::Migration
       t.string :title
       t.boolean :ordered
       t.text :description
-      t.boolean :published, default: :false
+      t.boolean :published, null: false, default: :false
       t.integer :hits
       t.timestamps null: false
     end
