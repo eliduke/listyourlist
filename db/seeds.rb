@@ -1,6 +1,6 @@
 # USERS
 [
-  { id: 1, login: "eliduke", email: "elisfanclub@gmail.com", location: "Portland, OR", url: "http://eliduke.com", bio: "Obnoxiously Idealistic", full_name: "Eli Duke", display_name: "eliduke", deleted: false, password: "poop", password_confirmation: "poop" },
+  { id: 1, login: "eliduke", email: "elisfanclub@gmail.com", location: "Portland, OR", url: "http://eliduke.com", bio: "Obnoxiously Idealistic", full_name: "Eli Duke", display_name: "eliduke", deleted: false },
   { id: 2, login: "veganstraightedge", email: "veganstraightedge@gmail.com", location: "Los Angeles, CA", url: "http://iamshane.com", bio: "still vegan. still straightedge. and baby, i'm an anarchist.", full_name: "Shane Becker", display_name: "veganstraightedge", deleted: false },
   { id: 3, login: "bookis", email: "vegan.bookis@gmail.com", location: "your house, Seattle", url: "http://www.iambookis.com", bio: "I am Bookis.", full_name: "bookis smuin", display_name: "Bookis", deleted: false },
   { id: 4, login: "petetheox", email: "pmhuff@gmail.com", location: "the house next door", url: "", bio: "", full_name: "", display_name: "petetheox", deleted: false },
