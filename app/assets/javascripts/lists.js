@@ -53,8 +53,4 @@ $(function(){
   $(".links").on('cocoon:after-insert', function(e, insertedItem) {
     insertedItem.find(".list-item").attr("placeholder", "List Item " + $(".list-item").length);
   });
-
-  if ($(window).width() < 550) {
-    $("#list_title").attr("placeholder", "Title");
-  }
 });

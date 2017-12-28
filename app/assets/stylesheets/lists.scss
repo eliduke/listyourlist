@@ -102,19 +102,10 @@
     display: inline;
   }
 
-  .help-text {
+  .status-help-text {
     color: #ccc;
     font-size: 80%;
     margin: -10px 0 40px 0;
-  }
-
-  .help-block {
-    color: #ccc;
-    font-size: 100%;
-
-    @media screen and (min-width: 550px) {
-      display: none;
-    }
   }
 
   .links {

@@ -1,14 +1,13 @@
 <div class="col-sm-7">
   <div class="form-group">
     <%= f.label :title, class: "sr-only" %>
-    <%= f.text_field :title, class: "form-control input-lg", placeholder: "Type title here, then hit ENTER" %>
-    <p class="help-block">Type title here, then hit ENTER</p>
+    <%= f.text_field :title, class: "form-control input-lg", placeholder: "Title" %>
     <%= error_messages_for(@list, :title, "right") %>
   </div>
 
   <div class="form-group">
     <%= f.label :description, class: "sr-only" %>
-    <%= f.text_area :description, class: "form-control input-lg", placeholder: "Description (optional, hit ENTER when you're done)" %>
+    <%= f.text_area :description, class: "form-control input-lg", placeholder: "Description (optional)" %>
   </div>
 
   <%= error_messages_for(@list, :items, "left") %>
@@ -19,7 +18,7 @@
         <%= render 'item_fields', f: item %>
       <% end %>
       <div class="links">
-        Type and hit ENTER or <%= link_to_add_association "click here", f, :items %>.
+        Type and hit ENTER, or <%= link_to_add_association "click here", f, :items %>
       </div>
     </<%= @list.ordered ? "o" : "u" %>l>
   </div>
@@ -68,7 +67,7 @@
     </div>
   </div>
 
-  <p class="help-text">Public lists are, as the name suggests, visible to the general public and search engine crawlers. Private lists are only visible to you when you are logged in. Status can be changed at anytime.</p>
+  <p class="status-help-text">Public lists are, as the name suggests, visible to the general public and search engine crawlers. Private lists are only visible to you when you are logged in. Status can be changed at anytime.</p>
 
   <div class="section">
     <%= f.submit "SAVE LIST", class: "btn btn-lg btn-block btn-lyl-primary" %>
