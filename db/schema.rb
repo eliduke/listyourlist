@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006164457) do
+ActiveRecord::Schema.define(version: 20171227051026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171006164457) do
     t.string "title"
     t.boolean "ordered"
     t.text "description"
-    t.boolean "published", default: false
+    t.boolean "public", default: true, null: false
     t.integer "hits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

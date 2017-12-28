@@ -3,11 +3,17 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
+  has_secure_password
+
+  validates :login, :email, presence: true
+
   validates_associated :lists
   validates_associated :comments
 
   default_scope { where(deleted: false) }
 
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  # devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  def can_see(list)
+    lists.include?(list)
+  end
+
 end

@@ -3,41 +3,95 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #list {
-
   h2 {
     margin-top: 0;
   }
 
-  textarea {
-    margin-top: 20px;
+  p.description {
+    color: #666;
+  }
+
+  p.listed_by {
+    display: block;
+    background: #eee;
+    text-align: center;
+    padding: 10px;
+    margin: 30px 0;
+  }
+
+  p.commented_by {
+    font-size: 90%;
+    color: #999;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  ul.single_list, ol.single_list {
+    margin: 20px 0;
+  }
+
+  ul.single_list li, ol.single_list li {
+    margin-bottom: 15px;
+  }
+
+  ul.comments {
+    list-style-type: none;
+    margin: -10px 0 0 0;
+    padding: 0;
+  }
+
+  ul.comments li {
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 100%;
+  }
+
+  ul.comments li:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  ul.comments li:nth-child(even) {
+    background-color: #eee;
   }
 }
 
 #lists {
-
   th.stat, td.stat {
     text-align: center;
     width: 15%;
   }
 
   thead tr th {
-    background-color: #333;
     color: #fff;
-    border-bottom: 2px solid #fcf;
+    background-color: $dark;
+    border-bottom: none;
     font-size: 120%;
   }
-
 }
 
-#new_list {
+#list-form {
+  h2 {
+    margin: 0 0 25px 0;
+    padding: 0;
+  }
 
-  h3:first-of-type {
-    background: #f9f;
-    color: #fff;
+  textarea {
+    height: 130px;
   }
 
   li {
     margin: 20px 0;
+
+    .fa {
+      font-size: 1.25em;
+      margin-left: 5px;
+    }
+
+    a { color: $pink }
+    a:hover { color: #666 }
+
+    a.remove_fields { color: #ccc }
+    a.remove_fields:hover { color: $pink }
   }
 
   ol, ul {
@@ -48,59 +102,93 @@
     display: inline;
   }
 
+  .help-text {
+    color: #ccc;
+    font-size: 80%;
+    margin: -10px 0 40px 0;
+  }
+
+  .help-block {
+    color: #999;
+    font-size: 100%;
+
+    @media screen and (min-width: 550px) {
+      display: none;
+    }
+  }
+
+  .links {
+    color: #999;
+    margin-top: -10px;
+    font-size: 100%;
+  }
+
   .settings {
     margin-bottom: 20px;
 
-    h3 {
-      background: #666;
-      color: #fff;
-      text-align: center;
-    }
-
     a {
-      color: #333;
+      color: $dark;
       text-decoration: none;
     }
 
     a:hover {
-      color: #f9f;
-    }
-
-    .option {
-      background: #eee;
-      margin-bottom: 10px;
-      padding: 1px;
-      cursor: pointer;
-      p {
-        font-size: 120%;
-        margin: 12px;
-        text-align: center;
-      }
-    }
-
-    .option:hover {
-      color: #f9f;
-    }
-
-    .selected {
-      background: #f9f;
-      color: #fff;
-    }
-
-    .selected:hover {
-      color: #fff;
-      cursor: default;
+      color: $pink;
     }
 
     input[type=submit] {
       margin-bottom: 10px;
     }
 
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section + .section {
+      padding-top: 20px;
+      //border-top: 1px solid #eee;
+    }
   }
 
+  .options {
+    label {
+      margin: 0;
+      padding: 0;
+      width: 49%;
+      font-size: 120%;
+      background-color: #eee;
+      font-weight: normal;
+      cursor: pointer;
+      color: $dark;
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+      input {
+        position: absolute;
+        visibility: hidden;
+      }
+
+      span {
+        text-align: center;
+        padding: 15px;
+        display: block;
+      }
+    }
+
+    input:checked + span {
+      color: #fff;
+      background-color: $pink;
+      cursor: auto;
+    }
+  }
 }
 
 @media (max-width: 767px) {
   .stat { display: none }
   h2 { font-size: 170% }
+}
+
+@media (min-width: 768px) {
+  .settings { margin-top: -46px }
 }

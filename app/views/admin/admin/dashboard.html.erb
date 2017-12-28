@@ -1,0 +1,70 @@
+<div id="dashboard">
+  <% if current_user.lists.empty? %>
+    <div class="row">
+      <div class="col-sm-12 welcome">
+        <h1>Oh, heeeeeey!</h1>
+        <h2>Welcome to ListYourList. We are so happy that you're here.</h2>
+        <p>You're about to get started on listing your first list, but before that, a couple small things to address.</p>
+        <p>First and foremost, this purely a for-funzies kind of website, so, please have fun and encourage others to do the same. Oh, and don't forget to think outside the checkbox!</p>
+        <h2 class="text-center"><%= link_to "Create my first list", new_admin_list_path %></h2>
+      </div>
+
+      <!-- <div class="col-sm-6">
+        <%#= link_to new_admin_list_path, class: "btn btn-lg btn-lyl-primary" do %>
+          <%#= fa_icon "plus" %> CREATE NEW LIST <%#= fa_icon "plus" %>
+        <%# end %>
+      </div> -->
+
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <ul class="list-group">
+        <li class="list-group-item justify-content-between header">
+          YOUR PUBLIC LISTS (<%= @publics.size %>)
+        </li>
+        <% if @publics.present? %>
+          <% @publics.each do |list| %>
+            <li class="list-group-item justify-content-between">
+              <span class="badge badge-pill badge-default">
+                <%= link_to [:edit, :admin, list] do %>
+                  <%= fa_icon "edit" %>
+                <% end %>
+              </span>
+              <%= link_to list.title, list_path(list), class: "list" %>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item justify-content-between">
+            You have no public lists yet.
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-sm-6">
+      <ul class="list-group">
+        <li class="list-group-item justify-content-between header">
+          YOUR PRIVATE LISTS (<%= @privates.size %>)
+        </li>
+        <% if @privates.present? %>
+          <% @privates.each do |list| %>
+            <li class="list-group-item justify-content-between">
+              <span class="badge badge-pill badge-default">
+                <%= link_to [:edit, :admin, list] do %>
+                  <%= fa_icon "edit" %>
+                <% end %>
+              </span>
+              <%= link_to list.title, list_path(list), class: "list" %>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item justify-content-between">
+            You have no private lists yet.
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

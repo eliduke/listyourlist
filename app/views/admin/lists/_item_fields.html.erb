@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <div class="field">
+    <li>
+      <%= f.text_field :body, class: "form-control input-lg list-item", style: "width: 88%", placeholder: "List Item #{f.index.to_i + 1}" %>
+
+      <%= link_to_remove_association f do %>
+        <%= fa_icon "times-circle" %>
+      <% end %>
+    </li>
+  </div>
+</div>

@@ -5,10 +5,10 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
     ordered false
-    published true
+    public true
 
-    trait :unpublished do
-      published false
+    trait :unpublic do
+      public false
     end
 
     trait :ordered do

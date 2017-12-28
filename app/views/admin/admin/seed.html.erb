@@ -10,7 +10,7 @@ end<br />
 # LISTS<br/>
 [<br />
 <% @lists.each do |list| %>
-&nbsp;&nbsp;{ id: <%= list.id %>, user_id: <%= list.user_id %>, title: %^<%= list.title %>^, description: %^<%= list.description %>^, published: <%= list.published %>, ordered: <%= list.ordered %>, hits: <%= list.hits %>, created_at: "<%= list.created_at %>", updated_at: "<%= list.updated_at %>", deleted: <%= list.deleted %> },<br />
+&nbsp;&nbsp;{ id: <%= list.id %>, user_id: <%= list.user_id %>, title: %^<%= list.title %>^, description: %^<%= list.description %>^, public: <%= list.public %>, ordered: <%= list.ordered %>, hits: <%= list.hits %>, created_at: "<%= list.created_at %>", updated_at: "<%= list.updated_at %>", deleted: <%= list.deleted %> },<br />
 <% end %>
 ].each do |list|<br />
 &nbsp;&nbsp;List.create!(list)<br />

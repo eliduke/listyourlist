@@ -1,12 +1,15 @@
 class List < ActiveRecord::Base
   belongs_to :user
-  has_many :items
+
   has_many :comments
+  has_many :items, inverse_of: :list, dependent: :destroy
   has_many :likes
 
   has_permalink
 
-  accepts_nested_attributes_for :items, reject_if: proc { |params| params['body'].blank? }
+  accepts_nested_attributes_for :items,
+    reject_if: proc { |params| params['body'].blank? },
+    allow_destroy: true
 
   validates :title, presence: true
   validates :user_id, presence: true
@@ -14,5 +17,14 @@ class List < ActiveRecord::Base
   validates_associated :items
   validates_associated :comments
 
-  default_scope { where(deleted: false, published: true) }
+  ######## DEFAULT SCOPE ########
+  default_scope { where(deleted: false) }
+
+  # had to name these weird because of rails reserved words
+  scope :publics, ->  { where(public: true) }
+  scope :privates, -> { where(public: false) }
+
+  def private?
+    !public?
+  end
 end

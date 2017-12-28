@@ -1,20 +1,33 @@
 <div id="list">
-  <div class="row">
 
+  <div class="row">
     <div class="col-sm-7">
       <h2><%= @list.title %></h2>
-      <p class="description"><%= @list.description %></p>
+      <%= simple_format(@list.description, class: "description") %>
 
+      <!-- TODO make block helper for this ? -->
       <<%= @list.ordered ? "o" : "u" %>l class="single_list">
         <% @list.items.each do |item| %>
           <li><%= item.body %></li>
         <% end %>
       </<%= @list.ordered ? "o" : "u" %>l>
 
-      <p class="listed_by">Listed by <%= link_to @list.user.login, profile_path(@list.user.login) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %></p>
+      <p class="listed_by">
+        <% if editable_by_current_user?(@list, current_user) %>
+          <% if @list.private? %>
+            Privately listed
+          <% else %>
+            Listed
+          <% end %>
+          by <strong>YOU</strong> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %> : <%= link_to "EDIT", edit_admin_list_path(@list) %>
+        <% else %>
+          Listed by <%= link_to_user(@list.user) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %>
+        <% end %>
+      </p>
 
       <% if @list.comments.present? %>
-        <h4>Comments</h4>
+        <h4 class="strikethrough"><span>COMMENTS</span></h4>
+
         <ul class="comments">
           <% @list.comments.each do |comment| %>
           <li id="comment_<%= comment.id %>">
@@ -31,13 +44,16 @@
     </div>
 
     <div class="col-sm-5">
-      <h3><%= @list.user.login %></h3>
-      <ul class="list_of_lists">
+      <ul class="list-group">
+        <li class="list-group-item justify-content-between header">
+          <%= @list.user.login %>
+        </li>
         <% @list.user.lists.reverse.each do |list| %>
-          <li><%= link_to list.title, list_path(list) %></li>
+          <li class="list-group-item justify-content-between">
+            <%= link_to_unless_current list.title, list_path(list), class: "list" %>
+          </li>
         <% end %>
       </ul>
     </div>
-
   </div>
 </div>

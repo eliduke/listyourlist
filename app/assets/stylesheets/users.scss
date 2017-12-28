@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #user {
-
   h2 {
     background-color: white;
     font-size: 600%;
@@ -20,21 +19,30 @@
   ul.list-unstyled li {
     font-size: 200%;
   }
-
 }
 
 #users {
-
   th.stat, td.stat {
     text-align:center;
     width: 15%;
   }
 
   thead tr th {
-    background-color: #333;
+    background-color: $dark;
     color: #fff;
     border-bottom: 2px solid #fcf;
     font-size: 120%;
   }
+}
 
+#users-form {
+  h2 { margin-top: 10px }
+
+  .section {
+    &.optional { margin: 40px 0 40px 0 }
+  }
+}
+
+#login {
+  min-height: 600px;
 }

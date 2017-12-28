@@ -1,22 +1,16 @@
-<div id="home">
-
-  <div class="row">
-  	<div class="col-sm-12 splash">
-  		<h1 class="homepage text-center">Pointless List-Making at its Finest</h1>
-  		<p class="lead text-center">Leave your checkboxes at home and <b>Get Creative</b></p>
-  	</div>
-  </div>
-
-  <%= render partial: "lists/lists", locals: {lists_new: @lists_new, lists_activity: @lists_activity, lists_popular: @lists_popular} %>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="disclaimer">
-        <h2>April 20th, 2015</h2>
-        <p>Exactly nine years ago to the day, I bought <b>listyourlist.com</b> and launched this site. Two years later, after getting bored with how it looked, I re-built it from the ground up! Since then there hasn't been much activity, but that's all about to the change because I am re-building ListYourList <b>AGAIN</b>!! I whipped together this front end as a little teaser while I flesh out the back end and admin. Hopefully I'll be done in a couple months, but until then feel free to poke around and find some funny stuff you talked about on the internet 10 years ago.</p>
-        <p>You're welcome.</p>
+<% content_for :hero do %>
+  <div id="home">
+    <div class="container splash-container">
+      <div class="row">
+        <div class="col-sm-12 splash">
+          <h1 class="text-center">Pointless List-Making at its Finest</h1>
+          <p class="lead text-center">Think outside the checkbox and <b>get creative</b></p>
+        </div>
       </div>
     </div>
   </div>
+<% end %>
 
+<div id="home">
+    <%= render partial: "lists/lists", locals: { lists_new: @lists_new, lists_activity: @lists_activity, lists_popular: @lists_popular } %>
 </div>

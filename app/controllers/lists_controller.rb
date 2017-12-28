@@ -7,13 +7,12 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(permalink: params[:id])
-    @title = "#{@list.title} / #{@list.user.login}"
-  end
 
-  def new
-    @title = "New List"
-    @list = List.new
-    @list.items.build
+    if @list.public? || current_user&.can_see(@list)
+      @title = "#{@list.title} / #{@list.user.login}"
+    else
+      redirect_to root_path
+    end
   end
 
 end
