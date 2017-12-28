@@ -20,8 +20,10 @@ $(function(){
   });
 
   $("form.js-list-form").keydown(function (e) {
-    // TODO add option + enter functionality for line breaks in the description?
-    if (e.keyCode === 13) {
+    // !e.altKey gives us two awesome things:
+    // -> option + enter for line breaks in description
+    // -> option + enter submits form in title or items
+    if (e.which == 13 && !e.altKey) {
       e.preventDefault();
 
       itemInputs = $(".list-item");
