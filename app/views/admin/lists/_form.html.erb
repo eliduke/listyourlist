@@ -19,7 +19,7 @@
         <%= render 'item_fields', f: item %>
       <% end %>
       <div class="links">
-        Type and hit ENTER. Or, <%= link_to_add_association "click here", f, :items %> to add another item.
+        Type and hit ENTER or <%= link_to_add_association "click here", f, :items %>.
       </div>
     </<%= @list.ordered ? "o" : "u" %>l>
   </div>

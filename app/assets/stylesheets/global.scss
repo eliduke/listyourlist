@@ -110,6 +110,7 @@ textarea, input {
           border-radius: 0 !important;
 }
 
+.btn { text-decoration: none }
 
 .btn-lyl-default {
   color: $dark;
@@ -129,15 +130,17 @@ textarea, input {
 
 .btn-lyl-primary:hover {
   color: #fff;
-  background-color: $pink;
+  background-color: $pink-light;
 }
 
 .btn-lyl-delete {
-  background-color: #fff;
+  color: $dark;
+  background-color: $pink-faint;
 }
 
 .btn-lyl-delete:hover {
-  background-color: black;
+  color: #eee;
+  background-color: $dark;
 }
 
 #footer {

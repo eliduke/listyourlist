@@ -7,4 +7,10 @@
     h1 { margin: 0 }
     h2 { margin: 20px 0 }
   }
+
+  .create-list { margin-bottom: 20px }
+
+  @media (min-width: 768px) {
+    .create-list { display: none }
+  }
 }
