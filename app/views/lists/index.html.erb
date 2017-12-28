@@ -12,7 +12,7 @@
       <% @lists.each do |list| %>
           <tr>
             <td><%= link_to list.title, list_path(list) %></td>
-            <td class="stat"><%= link_to list.user.login, profile_path(list.user.login) %></td>
+            <td class="stat"><%= link_to list.user.username, profile_path(list.user.username) %></td>
             <td class="stat"><%= list.comments.size %></td>
             <td class="stat"><%= list.likes.size %></td>
           </tr>

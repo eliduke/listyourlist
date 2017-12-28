@@ -9,7 +9,7 @@ module Admin
     end
 
     def seed
-      if current_user.login == "eliduke"
+      if current_user.username == "eliduke"
         @users    = User.unscoped.order(:id)
         @lists    = List.unscoped.order(:id)
         @items    = Item.unscoped.order(:id)

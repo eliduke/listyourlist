@@ -25,7 +25,6 @@ module Admin
         :login,
         :email,
         :full_name,
-        :display_name,
         :location,
         :url,
         :bio,

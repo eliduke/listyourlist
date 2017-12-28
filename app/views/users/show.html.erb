@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6">
       <ul class="list-unstyled">
-        <li><%= @user.full_name ? @user.full_name : @user.login %></li>
+        <li><%= @user.full_name ? @user.full_name : @user.username %></li>
         <li><%= @user.location %></li>
         <li><%= link_to @user.url, @user.url, target: "_blank" if @user.url %></li>
         <li><%= @user.bio %></li>

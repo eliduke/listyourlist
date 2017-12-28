@@ -1,6 +1,6 @@
 module ApplicationHelper
   def link_to_user(user)
-    link_to user.login, profile_path(user.login)
+    link_to user.username, profile_path(user.username)
   end
 
   def editable_by_current_user?(list, current_user)

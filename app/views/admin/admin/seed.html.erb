@@ -1,7 +1,7 @@
 # USERS<br/>
 [<br />
 <% @users.each do |user| %>
-&nbsp;&nbsp;{ id:  <%= user.id %>, login: "<%= user.login %>", email: "<%= user.email %>", location: "<%= user.location %>", url: "<%= user.url %>", bio: "<%= user.bio %>", full_name: "<%= user.full_name %>", display_name: "<%= user.display_name %>", deleted: <%= user.deleted %> },<br />
+&nbsp;&nbsp;{ id:  <%= user.id %>, username: "<%= user.username %>", email: "<%= user.email %>", location: "<%= user.location %>", url: "<%= user.url %>", bio: "<%= user.bio %>", full_name: "<%= user.full_name %>", deleted: <%= user.deleted %> },<br />
 <% end %>
 ].each do |user|<br />
 &nbsp;&nbsp;User.create!(user)<br />

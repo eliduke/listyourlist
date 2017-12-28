@@ -32,7 +32,7 @@
           <% @list.comments.each do |comment| %>
           <li id="comment_<%= comment.id %>">
             <span class="comment"><%= simple_format(comment.body) %></span>
-            <p class="commented_by">posted by <%= link_to comment.user.login, profile_path(comment.user.login) %> on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %></p>
+            <p class="commented_by">posted by <%= link_to comment.user.username, profile_path(comment.user.username) %> on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %></p>
           </li>
           <% end %>
         </ul>
@@ -46,7 +46,7 @@
     <div class="col-sm-5">
       <ul class="list-group">
         <li class="list-group-item justify-content-between header">
-          <%= @list.user.login %>
+          <%= @list.user.username %>
         </li>
         <% @list.user.lists.publics.reverse.each do |list| %>
           <li class="list-group-item justify-content-between">

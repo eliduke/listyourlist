@@ -9,7 +9,7 @@ class ListsController < ApplicationController
     @list = List.find_by(permalink: params[:id])
 
     if @list.public? || current_user&.can_see(@list)
-      @title = "#{@list.title} / #{@list.user.login}"
+      @title = "#{@list.title} / #{@list.user.username}"
     else
       redirect_to root_path
     end
