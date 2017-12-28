@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :edit, :update]
   end
 
-  get '@:login', to: 'users#show', as: :profile, username: /[^\/]+/
-  get "/:login", to: redirect { |params, request| "/@#{params[:login]}" }
+  get '@:username', to: 'users#show', as: :profile, username: /[^\/]+/
+  get "/:username", to: redirect { |params, request| "/@#{params[:username]}" }
 
   get 'admin/login' => 'admin/sessions#new', as: :login
   post 'admin/login' => 'admin/sessions#create'

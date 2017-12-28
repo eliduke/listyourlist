@@ -22,7 +22,7 @@ module Admin
 
     def user_params
       params.require(:user).permit(
-        :login,
+        :username,
         :email,
         :full_name,
         :location,

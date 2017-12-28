@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :login, :email, presence: true
+  validates :username, :email, presence: true
 
   validates_associated :lists
   validates_associated :comments
