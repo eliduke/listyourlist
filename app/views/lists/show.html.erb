@@ -48,7 +48,7 @@
         <li class="list-group-item justify-content-between header">
           <%= @list.user.login %>
         </li>
-        <% @list.user.lists.reverse.each do |list| %>
+        <% @list.user.lists.publics.reverse.each do |list| %>
           <li class="list-group-item justify-content-between">
             <%= link_to_unless_current list.title, list_path(list), class: "list" %>
           </li>
