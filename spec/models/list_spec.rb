@@ -5,8 +5,8 @@ RSpec.describe List, type: :model do
   context "associations :" do
 
     before(:all) do
-      @user = FactoryGirl.create(:user)
-      @list = FactoryGirl.create(:list, user_id: @user.id)
+      @user = FactoryBot.create(:user)
+      @list = FactoryBot.create(:list, user_id: @user.id)
     end
 
     it "belongs to a user" do
@@ -14,13 +14,13 @@ RSpec.describe List, type: :model do
     end
 
     it "has many items" do
-      items = FactoryGirl.create_list(:item, 5)
+      items = FactoryBot.create_list(:item, 5)
       @list.items << items
       expect(@list.items).to eq items
     end
 
     it "has many comments" do
-      comments = FactoryGirl.create_list(:comment, 3)
+      comments = FactoryBot.create_list(:comment, 3)
       @list.comments << comments
       expect(@list.comments).to eq comments
     end
@@ -30,8 +30,8 @@ RSpec.describe List, type: :model do
   context "scopes :" do
 
     before(:all) do
-      pub = FactoryGirl.create(:list)
-      unpub = FactoryGirl.create(:list, :unpublished)
+      pub = FactoryBot.create(:list)
+      unpub = FactoryBot.create(:list, :unpublished)
       lists = [pub.id, unpub.id]
       @lists = List.where(id: lists)
     end
