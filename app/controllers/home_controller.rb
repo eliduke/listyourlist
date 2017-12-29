@@ -2,8 +2,6 @@ class HomeController < ApplicationController
   before_action :authorize, only: [:dashboard, :seed]
 
   def index
-    redirect_to dashboard_path if current_user
-
     @title = "Pointless List-Making at its Finest"
     @lists_new = List.publics.order(created_at: :desc).limit(14)
     @lists_activity = List.publics.where(id: Comment.order(created_at: :desc).limit(14).map(&:list_id).uniq)
