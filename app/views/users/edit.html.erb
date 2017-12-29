@@ -1,0 +1,16 @@
+<div id="users-form">
+  <h2 class="text-center">Edit your account info</h2>
+  <%= form_for @user, url: { action: :edit } do |f| %>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= render partial: "form", locals: { f: f } %>
+
+        <div class="actions">
+          <%= f.submit "UPDATE ACCOUNT INFO", class: "btn btn-lg btn-block btn-lyl-primary" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

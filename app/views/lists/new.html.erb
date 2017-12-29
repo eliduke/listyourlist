@@ -1,0 +1,9 @@
+<div id="list-form">
+  <%= form_for @list, html: { class: "js-list-form" } do |f| %>
+    <h2>Create a new list</h2>
+
+    <div class="row">
+      <%= render partial: "form", locals: { f: f } %>
+    </div>
+  <% end %>
+</div>

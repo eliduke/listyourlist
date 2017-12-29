@@ -3,10 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #list {
-  h2 {
-    margin-top: 0;
-  }
-
   p.description {
     color: #666;
   }
@@ -71,7 +67,7 @@
 
 #list-form {
   h2 {
-    margin: 0 0 25px 0;
+    margin: 0 0 20px 0;
     padding: 0;
   }
 
@@ -181,5 +177,5 @@
 }
 
 @media (min-width: 768px) {
-  .settings { margin-top: -46px }
+  .settings { margin-top: -42px }
 }

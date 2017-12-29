@@ -19,7 +19,7 @@
           <% else %>
             Listed
           <% end %>
-          by <strong>YOU</strong> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %> : <%= link_to "EDIT", edit_admin_list_path(@list) %>
+          by <strong>YOU</strong> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %> : <%= link_to "EDIT", edit_list_path(@list) %>
         <% else %>
           Listed by <%= link_to_user(@list.user) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %>
         <% end %>

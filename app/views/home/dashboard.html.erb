@@ -3,18 +3,19 @@
     <div class="row">
       <div class="col-sm-12 welcome">
         <h1>Oh, heeeeeey!</h1>
-        <h2>Welcome to ListYourList. We are so happy that you're here.</h2>
-        <p>You're about to get started on listing your first list, but before that, a couple small things to address.</p>
-        <p>First and foremost, this purely a for-funzies kind of website, so, please have fun and encourage others to do the same.</p>
-        <p>And don't forget to think outside the checkbox!</p>
+        <h2>Welcome to ListYourList. We are so happy to have you. 🤗</h2>
+        <p>You're about to get started listing your first list, but before that, a couple small things to address.</p>
+        <p>First and foremost, this is purely a for-funzies kind of website. Please have fun and encourage others to do the same.</p>
+        <p>Secondly, we want this thing to be the best that it can be. If you've got feedback (good or bad), please send us an email.</p>
+        <p>Lastly, don't forget to get creative and think outside the checkbox!</p>
       </div>
     </div>
   <% end %>
 
   <div class="row">
     <div class="col-sm-6">
-      <%= link_to new_admin_list_path, class: "btn btn-lg btn-block btn-lyl-primary create-list" do %>
-        <%= fa_icon "plus" %> CREATE NEW LIST <%= fa_icon "plus" %>
+      <%= link_to new_list_path, class: "btn btn-lg btn-block btn-lyl-default create-list" do %>
+        ⭐️ CREATE NEW LIST ⭐️
       <% end %>
 
       <ul class="list-group">
@@ -25,7 +26,7 @@
           <% @publics.each do |list| %>
             <li class="list-group-item justify-content-between">
               <span class="badge badge-pill badge-default">
-                <%= link_to [:edit, :admin, list] do %>
+                <%= link_to edit_list_path(list) do %>
                   <%= fa_icon "edit" %>
                 <% end %>
               </span>
@@ -49,7 +50,7 @@
           <% @privates.each do |list| %>
             <li class="list-group-item justify-content-between">
               <span class="badge badge-pill badge-default">
-                <%= link_to edit_admin_list_path(list) do %>
+                <%= link_to edit_list_path(list) do %>
                   <%= fa_icon "edit" %>
                 <% end %>
               </span>

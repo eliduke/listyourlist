@@ -36,13 +36,15 @@
 }
 
 #users-form {
-  h2 { margin-top: 10px }
+  textarea { height: 100px }
 
   .section {
+    &.required { margin-top: 20px;}
     &.optional { margin: 40px 0 40px 0 }
   }
 }
 
-#login {
+#login, #change-password {
   min-height: 600px;
+  h2 { margin-bottom: 30px }
 }

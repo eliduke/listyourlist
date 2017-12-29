@@ -23,7 +23,7 @@ module ApplicationHelper
     end
 
     if object.errors.messages[attribute].present?
-      "<p class='error_messages_for pink text-#{alignment}'>#{messages}</p>".html_safe
+      "<p class='error-messages-for text-#{alignment}'>#{messages}</p>".html_safe
     end
   end
 end

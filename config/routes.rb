@@ -1,24 +1,31 @@
 Rails.application.routes.draw do
-
   root 'home#index'
 
-  resources :lists, only: [:index, :show]
-  resources :users, only: [:show]
+  controller :home do
+    get :about
+    get :dashboard
+    get :seed
+  end
 
-  get 'about', to: 'home#about', as: :about
+  resources :lists, except: [:index]
 
-  namespace :admin do
-    get 'dashboard', to: 'admin#dashboard', as: :dashboard
-    get 'seed', to: 'admin#seed', as: :seed
+  controller :users do
+    get :signup, action: :new, as: :signup
+    post :signup, action: :create
 
-    resources :lists, except: [:show]
-    resources :users, only: [:new, :create, :edit, :update]
+    get :settings, action: :edit
+    patch :settings, action: :update
+
+    get "settings/change_password", action: :change_password
+    patch "settings/change_password", action: :update_password
+  end
+
+  controller :sessions do
+    get :login, action: :new, as: :login
+    post :login, action: :create
+    get :logout, action: :destroy, as: :logout
   end
 
   get '@:username', to: 'users#show', as: :profile, username: /[^\/]+/
   get "/:username", to: redirect { |params, request| "/@#{params[:username]}" }
-
-  get 'admin/login' => 'admin/sessions#new', as: :login
-  post 'admin/login' => 'admin/sessions#create'
-  get 'admin/logout' => 'admin/sessions#destroy', as: :logout
 end
