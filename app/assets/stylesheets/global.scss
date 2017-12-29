@@ -52,6 +52,11 @@ textarea, input {
   margin: 0;
 }
 
+input[type=checkbox] {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
 @media (max-width: 350px) {
   .input-lg {
     height: 34px;

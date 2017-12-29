@@ -1,20 +1,28 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to dashboard_path if current_user
   end
 
   def create
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      helpers.login(user)
+
+      if params[:remember_me] == "1"
+        helpers.remember(user)
+      else
+        helpers.forget(user)
+      end
+
       redirect_to dashboard_path
     else
-      render :new, alert: "Your email and password were not correct."
+      render :new, alert: "Your email and password were not correct. 🤔"
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to login_path, notice: "You are logged out."
+    helpers.logout
+    redirect_to login_path, notice: "You are totally logged out. 🤙🏼"
   end
 end

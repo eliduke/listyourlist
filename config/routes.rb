@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   controller :sessions do
     get :login, action: :new, as: :login
     post :login, action: :create
-    get :logout, action: :destroy, as: :logout
+    delete :logout, action: :destroy, as: :logout
   end
 
   get '@:username', to: 'users#show', as: :profile, username: /[^\/]+/

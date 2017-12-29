@@ -37,6 +37,7 @@
 
 #users-form {
   textarea { height: 100px }
+  label { font-weight: 500 }
 
   .section {
     &.required { margin-top: 20px;}
@@ -46,5 +47,6 @@
 
 #login, #change-password {
   min-height: 600px;
+  label { font-weight: 500 }
   h2 { margin-bottom: 30px }
 }
