@@ -2,7 +2,7 @@
   <div class="field">
     <li>
       <div class="form-group">
-        <%= f.text_area :body, class: "form-control input-lg js-list-item flex-text", placeholder: "List Item #{f.index.to_i + 1}" %>
+        <%= f.text_area :body, class: "form-control input-lg flex-text item js-list-item", placeholder: "List Item #{f.index.to_i + 1}" %>
       </div>
 
       <%= link_to_remove_association f do %>

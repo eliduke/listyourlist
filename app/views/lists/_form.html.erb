@@ -13,7 +13,7 @@
 
   <%= error_messages_for(@list, :items, "left") %>
 
-  <div id="list" class="form-group">
+  <div id="list">
     <<%= @list.ordered ? "o" : "u" %>l id="items">
       <%= f.fields_for :items do |item| %>
         <%= render 'item_fields', f: item %>
