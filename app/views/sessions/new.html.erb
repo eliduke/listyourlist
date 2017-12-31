@@ -16,7 +16,13 @@
 
         <div class="form-group">
           <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-          <%= label_tag :remember_me, "Please remember me next time" %>
+          <label class="js-remember-me-unchecked" for="remember_me">
+            Remember me
+          </label>
+
+          <label class="js-remember-me-checked" for="remember_me" style="display: none">
+            Remember me <span class="sure-thing">👍🏼 Sure thing!</span>
+          </label>
         </div>
 
         <div class="form-group">

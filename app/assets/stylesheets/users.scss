@@ -45,6 +45,13 @@
   }
 }
 
+#login {
+  .sure-thing {
+    color: $pink;
+    margin-left: 5px;
+  }
+}
+
 #login, #change-password {
   min-height: 600px;
   label { font-weight: 500 }

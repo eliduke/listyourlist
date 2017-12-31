@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
   def new
     redirect_to dashboard_path if current_user
+
+    @title = "Login"
   end
 
   def create
+    @title = "Login"
+
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])

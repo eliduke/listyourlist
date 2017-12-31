@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       @title = "Sign Up"
-      render :new, alert: "Your account was not created. See below for details."
+      render :new, alert: "Your account was not created. 🤔 See below for details."
     end
   end
 
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path, notice: "Your account info was updated. 👍🏼"
     else
       @title = "Edit your account"
-      render :edit, alert: "Your account info did not save. See below for details."
+      render :edit, alert: "Your account info did not save. 🤔 See below for details."
     end
   end
 
