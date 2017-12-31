@@ -71,42 +71,20 @@
     padding: 0;
   }
 
-  textarea {
-    height: 130px;
+  textarea.flex-text {
+    height: 44px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    resize: none;
   }
 
-  li {
-    margin: 20px 0;
-
-    .fa {
-      font-size: 1.25em;
-      margin-left: 5px;
-    }
-
-    a { color: $pink }
-    a:hover { color: #666 }
-
-    a.remove_fields { color: #ccc }
-    a.remove_fields:hover { color: $pink }
-  }
-
-  ol, ul {
-    margin-left: -15px;
-  }
-
-  .form-control {
-    display: inline;
-  }
-
-  .status-help-text {
-    color: #ccc;
-    font-size: 80%;
-    margin: -10px 0 40px 0;
+  textarea.description {
+    height: 100px;
   }
 
   .links {
     color: #ccc;
-    margin-top: -10px;
     font-size: 100%;
   }
 
@@ -169,6 +147,42 @@
       cursor: auto;
     }
   }
+
+  ol, ul {
+    margin-left: -20px;
+  }
+
+  li {
+    margin: 0;
+    position: relative;
+
+    .fa {
+      font-size: 1.25em;
+      background: #fff;
+      padding: 0;
+      margin: 0;
+    }
+
+    a { color: $pink }
+    a:hover { color: #666 }
+
+    a.remove_fields {
+      color: #ccc;
+      margin: 0;
+      position: absolute;
+      z-index: 2;
+      top: -10px;
+      right: -8px;
+    }
+
+    a.remove_fields:hover { color: $pink }
+  }
+}
+
+.status-help-text {
+  color: #ccc;
+  font-size: 80%;
+  margin: -10px 0 40px 0;
 }
 
 @media (max-width: 767px) {
