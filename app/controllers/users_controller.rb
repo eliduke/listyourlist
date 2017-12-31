@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       @title = "Sign Up"
-      render :new, alert: "Your account was not created. 🤔 See below for details."
+      render :new
     end
   end
 

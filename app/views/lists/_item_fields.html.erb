@@ -5,7 +5,7 @@
         <%= f.text_area :body, class: "form-control input-lg flex-text item js-list-item", placeholder: "List Item #{f.index.to_i + 1}" %>
       </div>
 
-      <%= link_to_remove_association f do %>
+      <%= link_to_remove_association f, data: { confirm: "Are you sure you want to remove this list item?" } do %>
         <%= fa_icon "times-circle" %>
       <% end %>
     </li>

@@ -18,10 +18,24 @@
       <%= f.fields_for :items do |item| %>
         <%= render 'item_fields', f: item %>
       <% end %>
-      <div class="links">
-        Type and hit ENTER, or <%= link_to_add_association "click here", f, :items %>
+      <div class="links" data-association-insertion-position="before" data-association-insertion-node="this">
+        Type and hit ENTER, or <%= link_to_add_association "click here", f, :items %> <%= link_to "🤔", "#", class: "js-form-help form-help-link", style: "text-decoration: none" %>
       </div>
     </<%= @list.ordered ? "o" : "u" %>l>
+  </div>
+
+  <div class="form-help" style="display:none">
+    <p>Navigating the list form ☝🏼 is really easy with a couple helpful keyboard shortcuts. Once you get the hang of it, you'll be listing lists with maximum efficiency.</p>
+    <p>TL;DR -> <strong>Hit ENTER</strong></p>
+    <p>The best way to navigate between fields is by hitting ENTER.
+    <ul>
+      <li>Type your title, hit ENTER, and the cursor will move to Description.</li>
+      <li>Type your Description, hit ENTER, and the cursor will move to the first Item.</li>
+      <li>Type your Item, hit ENTER, a new item field appears, and the cursor will move to it.</li>
+      <li>And so on and so forth...</li>
+    </ul>
+    <p><strong>TAB</strong></p>
+    <p>Since ENTER moves things along so well, tabbing between fields works a little differently by highlight all text. But, don't worry, even when fully selected, hitting ENTER still moves the cursor along as expected.</p>
   </div>
 </div>
 

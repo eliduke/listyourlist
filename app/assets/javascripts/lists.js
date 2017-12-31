@@ -5,24 +5,38 @@ function flexText(element) {
   }
 }
 
-function flexTextAll(elements) {
-  elements.each(function(index, element) {
+function flexTextAll() {
+  $("textarea.flex-text").each(function(index, element) {
     flexText(element);
+
+    $(element).on('input', function() {
+      flexText(this);
+    });
+  });
+}
+
+function setCocoonCallback() {
+  $(".links").on('cocoon:after-insert', function(e, insertedItem) {
+    textArea = insertedItem.find(".js-list-item");
+    textArea.attr("placeholder", "List Item " + $(".js-list-item").length);
+    textArea.focus();
+    textArea.on('input', function() {
+      flexText(this);
+    });
   });
 }
 
 $(function(){
-  flexTextAll($("textarea.flex-text"));
+  setCocoonCallback();
+  flexTextAll();
 
-  $("textarea.flex-text").focus(function(e) {
-    // input = $(this);
-    // var tmpStr = input.val();
-    // input.val('');
-    // input.val(tmpStr);
-
-    $(this).on('input', function() {
-      flexText(this);
-    });
+  $("textarea.flex-text").focus(function() {
+    // hack for putting cursor at the end when clicking or hitting enter
+    // doesn't work for tabbing in for some reason. TODO figure that out
+    input = $(this);
+    var tmpStr = input.val();
+    input.val('');
+    input.val(tmpStr);
   });
 
   $(".js-switch-list-type").change(function() {
@@ -41,6 +55,9 @@ $(function(){
     $('.js-list-item').each(function(index) {
       $(this).val(existingItems[index]);
     });
+
+    flexTextAll();
+    setCocoonCallback();
   });
 
   $("form.js-list-form").keydown(function (e) {
@@ -67,19 +84,14 @@ $(function(){
     }
   });
 
-  // TODO I don't know why this does what it does, but it makes
-  // the 'after-insert' callback work. Figure it out.
-  $(".links").
-    data("association-insertion-position", 'before').
-    data("association-insertion-node", 'this');
+  $("form.js-list-form").keyup(function (e) {
+    if (e.which == 9) {
+      $(document.activeElement).select();
+    }
+  });
 
-  $(".links").on('cocoon:after-insert', function(e, insertedItem) {
-    textArea = insertedItem.find(".js-list-item");
-
-    textArea.attr("placeholder", "List Item " + $(".js-list-item").length);
-    textArea.focus();
-    textArea.on('input', function() {
-      flexText(this);
-    });
+  $(".js-form-help").click(function(e) {
+    e.preventDefault();
+    $(".form-help").toggle();
   });
 });

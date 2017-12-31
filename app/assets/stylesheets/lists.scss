@@ -77,6 +77,13 @@
     box-sizing: border-box;
     overflow: hidden;
     resize: none;
+
+    @media (max-width: 350px) {
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+    }
   }
 
   textarea.description {
@@ -86,6 +93,29 @@
   .links {
     color: #ccc;
     font-size: 100%;
+
+    .form-help-link {
+      font-size: 120%;
+      float: right;
+      margin-right: 5px;
+    }
+
+    // TODO this doesn't work right now
+    // it's inline in the lists/_form
+    a { text-decoration: none }
+  }
+
+  .form-help {
+    margin-top: 20px;
+    padding-left: 20px;
+
+    p, ul {
+      color: #666;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
   }
 
   .settings {
@@ -154,11 +184,11 @@
 
   li {
     margin: 0;
-    width: 100%;
+    width: 99%;
     position: relative;
 
     // fixes weird li behavior
-    // from .form-control
+    // inherited from .form-control
     textarea.item {
       display: inline-block;
       vertical-align: middle;
