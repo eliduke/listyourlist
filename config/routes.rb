@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     get :settings, action: :edit
     patch :settings, action: :update
 
-    get "settings/change_password", action: :change_password
-    patch "settings/change_password", action: :update_password
+    get "settings/change-password", action: :change_password
+    patch "settings/change-password", action: :update_password
   end
 
   controller :sessions do
