@@ -7,7 +7,7 @@ class ListsController < ApplicationController
 
     @comment = Comment.new
 
-    if @list.public? || current_user&.can_see(@list)
+    if @list&.public? || current_user&.can_see(@list)
       @title = "#{@list.title} / #{@list.user.username}"
     else
       redirect_to root_path
