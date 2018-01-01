@@ -5,6 +5,8 @@ class ListsController < ApplicationController
   def show
     @list = List.find_by(permalink: params[:id])
 
+    @comment = Comment.new
+
     if @list.public? || current_user&.can_see(@list)
       @title = "#{@list.title} / #{@list.user.username}"
     else

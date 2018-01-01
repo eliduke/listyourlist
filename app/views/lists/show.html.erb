@@ -11,6 +11,7 @@
         <% end %>
       </<%= @list.ordered ? "o" : "u" %>l>
 
+      <!-- TODO make block helper for this ? -->
       <p class="listed_by">
         <% if editable_by_current_user?(@list, current_user) %>
           <% if @list.private? %>
@@ -24,21 +25,49 @@
         <% end %>
       </p>
 
-      <% if @list.comments.present? %>
-        <h4 class="strikethrough"><span>COMMENTS</span></h4>
+      <% if @list.commenting? %>
 
-        <ul class="comments">
-          <% @list.comments.each do |comment| %>
-          <li id="comment_<%= comment.id %>">
-            <span class="comment"><%= simple_format(comment.body) %></span>
-            <p class="commented_by">posted by <%= link_to comment.user.username, profile_path(comment.user.username) %> on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %></p>
-          </li>
-          <% end %>
-        </ul>
-        <!-- <div class="form-group">
-          <textarea class="form-control" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-listyourlist btn-block">Submit</button> -->
+        <% if @list.comments.present? %>
+          <h4 class="strikethrough comments">
+            <span>COMMENTS</span>
+          </h4>
+
+          <ul class="comments">
+            <% @list.comments.each do |comment| %>
+              <li id="comment_<%= comment.id %>">
+                <span class="comment">
+                  <%= simple_format(comment.body) %>
+                </span>
+
+                <!-- TODO make block helper for this ? -->
+                <p class="commented_by">
+                  posted by <%= link_to comment.user.username, profile_path(comment.user.username) %>
+
+                  <% if comment.more_than_one_week_old? %>
+                    on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %>
+                  <% else %>
+                    <%= time_ago_in_words(comment.created_at) %> ago
+                  <% end %>
+
+                  <% if current_user && current_user == comment.user  %>
+                    | <%= link_to list_comment_path(@list, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } do %>
+                      <%= fa_icon "trash-o" %>
+                    <% end %>
+                  <% end %>
+                </p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h4 class="strikethrough">
+          <span>ADD A NEW COMMENT</span>
+        </h4>
+
+        <%= form_for [@list, @comment] do |f| %>
+          <%= f.text_area :body, class: "form-control input-lg comment-textarea" %>
+          <%= f.submit "SAVE COMMENT", class: "btn btn-lg btn-block btn-lyl-primary" %>
+        <% end %>
       <% end %>
     </div>
 

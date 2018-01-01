@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get :seed
   end
 
-  resources :lists, except: [:index]
+  resources :lists, except: [:index] do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
 
   controller :users do
     get :signup, action: :new, as: :signup

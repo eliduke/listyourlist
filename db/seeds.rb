@@ -31,7 +31,7 @@
   { id: 29, username: "allioz", email: "alli.osborn@gmail.com", location: "46060", url: "", bio: "", full_name: "", deleted: false },
   { id: 30, username: "stizump", email: "stumpemc@welchpkg.com", location: "46032", url: "", bio: "", full_name: "", deleted: false },
   { id: 32, username: "ofalexneverybrookis", email: "buildaposinationx@yahoo.com", location: "666666", url: "", bio: "", full_name: "", deleted: false },
-  { id: 33, username: "andrew and fiona", email: "fionamckibben@hotmail.com", location: "seattle, 98115", url: "", bio: "", full_name: "", deleted: false },
+  { id: 33, username: "andrewandfiona", email: "fionamckibben@hotmail.com", location: "seattle, 98115", url: "", bio: "", full_name: "Fiona and Andrew", deleted: false },
   { id: 34, username: "mattography", email: "mattography@hotmail.com", location: "98109", url: "", bio: "", full_name: "", deleted: false },
   { id: 35, username: "lindsey2889", email: "funkymonkey22@verizon.net", location: "SEATTLE!", url: "", bio: "", full_name: "", deleted: false },
   { id: 36, username: "dastoner", email: "dastoner@indiana.edu", location: "47408", url: "", bio: "", full_name: "", deleted: false },
