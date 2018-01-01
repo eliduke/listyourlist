@@ -95,8 +95,8 @@
     font-size: 100%;
 
     .form-help-link {
-      font-size: 120%;
       float: right;
+      font-size: 120%;
       margin-right: 5px;
     }
 
@@ -113,8 +113,14 @@
       color: #666;
     }
 
+    ul {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
     li {
       margin-bottom: 10px;
+      margin-left: 20px;
     }
   }
 
