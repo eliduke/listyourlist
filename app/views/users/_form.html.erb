@@ -1,7 +1,5 @@
 <div class="section required">
-  <h4 class="strikethrough">
-    <span>REQUIRED</span>
-  </h4>
+  <%= strikethrough_heading(text: "REQUIRED") %>
 
   <div class="form-group">
     <%= f.label :username, "Username" %>
@@ -35,9 +33,7 @@
 </div>
 
 <div class="section optional">
-  <h4 class="strikethrough pink">
-    <span>OPTIONAL</span>
-  </h4>
+  <%= strikethrough_heading(text: "OPTIONAL") %>
 
   <div class="form-group">
     <%= f.label :full_name, "Full Name" %>

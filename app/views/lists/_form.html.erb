@@ -25,11 +25,10 @@
   </div>
 
   <div class="form-help" style="display:none">
-    <h4 class="strikethrough">
-      <span>Lil' Form Helper</span>
-    </h4>
+    <%= strikethrough_heading(text: "Lil Form Helper") %>
+
     <p>Navigating the list form ☝🏼 is really fun with a couple keyboard shortcuts. Well, it's actually only sorta one shortcut, but it's got lots of features! Once you get the hang of it, you'll be listing lists with maximum efficiency.</p>
-    <h5>TL;DR => <strong>Hit ENTER</strong> 🤓</h5>
+    <h5>TL;DR 👉🏼 <strong>Hit ENTER</strong> 🤓</h5>
     <p>The best way to navigate between fields is by hitting ENTER:
     <ul>
       <li>Type your title, hit ENTER, and the cursor will move to Description.</li>
@@ -39,16 +38,17 @@
     </ul>
     <p>All of the above continues to work even after you've filled stuff out. So, let's say you need to edit the Title after creating a bunch items. Make your adjustments to the title and then just hit ENTER a bunch of times: the cursor will cruise right on through the Description and all existing items until it stops at the last empty item field.</p>
     <h5>What about tab?</h5>
-    <p>Since ENTER is being so darn helpful around here, we decided to make <em>tabbing between fields</em> work a little differently: tabbing from one field to the next highlights all text in the second field. But, don't worry, even when fully selected, hitting ENTER still moves the cursor along as expected.</p>
+    <p>You can still tab between fields like normal, and the cool part is that even after tabbing into a field and highlighting its contents, hitting ENTER still moves the cursor along to the next field.</p>
     <!-- TODO make this a link to our email address or contact form -->
-    <p>Don't forget! If you've got feedback (good or bad), please send us an email.</p>
+    <p>Last but not least, if you've got feedback (good or bad), please send us an email.</p>
     <h5>And since you made it this far, you get a star! ⭐️</h5>
   </div>
 </div>
 
 <div class="settings col-sm-5">
   <div class="section">
-    <h4 class="strikethrough"><span>List Type</span></h4>
+    <%= strikethrough_heading(text: "List Type") %>
+
     <div class="options">
       <label>
         <%= f.radio_button :ordered, false, checked: true, class: "js-switch-list-type" %>
@@ -62,7 +62,8 @@
   </div>
 
   <div class="section">
-    <h4 class="strikethrough"><span>Comments</span></h4>
+    <%= strikethrough_heading(text: "Comments") %>
+
     <div class="options">
       <label>
         <%= f.radio_button :commenting, true, checked: true %>
@@ -75,21 +76,37 @@
     </div>
   </div>
 
-  <div class="section">
-    <h4 class="strikethrough"><span>Status</span></h4>
+  <div class="section status">
+    <%= strikethrough_heading(text: "Status") %>
+
     <div class="options">
       <label>
-        <%= f.radio_button :public, true, checked: true %>
+        <%= f.radio_button :public, true, checked: true, class: "js-switch-list-status"  %>
         <span>Public</span>
       </label>
       <label>
-        <%= f.radio_button :public, false %>
+        <%= f.radio_button :public, false, class: "js-switch-list-status"  %>
         <span>Private</span>
       </label>
     </div>
+
+    <p class="status-help-text">
+      Public lists are visible to people and robots (search engine spiders). Private lists are only visible to you (when logged in) and anyone with the private link (after saving).
+    </p>
   </div>
 
-  <p class="status-help-text">Public lists are, as the name suggests, visible to the general public and search engine crawlers. Private lists are only visible to you when you are logged in. Status can be changed at anytime.</p>
+  <% if action_name == "edit" || action_name == "update" %>
+    <div class="section private-link" <%= display_none_if(@list.public?) %>>
+      <%= strikethrough_heading(text: "Private Link") %>
+
+      <%= text_field_tag "private_link", @list.private_link, class: "form-control input-md" %>
+
+      <p class="private-help-text">
+        Use this link to share your private list with friends. It is not searchable by people or robots, but it is a public link so who ever has that link can see your private list.
+        <span></span>
+      </p>
+    </div>
+  <% end %>
 
   <div class="section">
     <%= f.submit "SAVE LIST", class: "btn btn-lg btn-block btn-lyl-primary" %>

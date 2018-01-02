@@ -34,22 +34,21 @@ h3, h4 {
 	color: $dark;
 }
 
-h4.strikethrough {
-	padding: 10px;
-  background: #fff;
-  text-align: center;
+.strikethrough {
+  margin-top: 10px;
+  padding: 5px 0 15px 0;
 
-  span {
-    background: #fff;
-    padding: 0 10px;
-    text-align: center;
+  hr {
+    margin: 10px 0 -10px 0;
+    border-top: 2px solid $pink-faint;
   }
-}
 
-h4.strikethrough+* {
-  border-top: 2px solid $pink-faint;
-  padding-top: 20px;
-  margin-top: -20px;
+  h4 {
+    padding: 0 10px;
+    width: fit-content;
+    margin: 0 auto;
+    background: #fff;
+  }
 }
 
 textarea, input {

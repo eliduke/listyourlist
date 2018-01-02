@@ -7,7 +7,17 @@ module ApplicationHelper
     end
 
     if object.errors.messages[attribute].present?
-      "<p class='error-messages-for text-#{alignment}'>#{messages}</p>".html_safe
+      content_tag :p, messages, class: "error-messages-for text-#{alignment}"
     end
+  end
+
+  def strikethrough_heading(text:)
+    content_tag :div, class: "strikethrough" do
+      tag(:hr) + content_tag(:h4, text)
+    end
+  end
+
+  def display_none_if(boolean)
+    "style=display:none" if boolean
   end
 end

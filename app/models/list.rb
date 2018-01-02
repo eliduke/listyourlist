@@ -5,6 +5,8 @@ class List < ActiveRecord::Base
   has_many :items, inverse_of: :list, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  has_secure_token :secure_id
+
   has_permalink
 
   accepts_nested_attributes_for :items,
@@ -26,5 +28,9 @@ class List < ActiveRecord::Base
 
   def private?
     !public?
+  end
+
+  def private_link
+    "https://listyourlist.com/lists/#{secure_id}"
   end
 end

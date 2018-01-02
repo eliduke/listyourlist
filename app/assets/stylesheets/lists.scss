@@ -168,15 +168,30 @@
 
     .section {
       margin-bottom: 20px;
-    }
 
-    .section + .section {
-      padding-top: 20px;
-      //border-top: 1px solid #eee;
+      p.status-help-text {
+        color: #ccc;
+        font-size: 80%;
+        margin: -30px 0 40px 0;
+      }
+
+      p.private-help-text {
+        color: #ccc;
+        font-size: 80%;
+        margin: 5px 0 40px 0;
+
+        span {
+          margin-top: 10px;
+          display: block;
+          font-weight: bold;
+        }
+      }
     }
   }
 
   .options {
+    margin-bottom: 40px;
+
     label {
       margin: 0;
       padding: 0;
@@ -250,12 +265,6 @@ textarea.comment-textarea {
   margin-bottom: 20px;
 }
 
-.status-help-text {
-  color: #ccc;
-  font-size: 80%;
-  margin: -10px 0 40px 0;
-}
-
 @media (max-width: 767px) {
   .stat { display: none }
   h2 { font-size: 170% }
@@ -263,5 +272,5 @@ textarea.comment-textarea {
 }
 
 @media (min-width: 768px) {
-  .settings { margin-top: -42px }
+  .settings { margin-top: -52px }
 }

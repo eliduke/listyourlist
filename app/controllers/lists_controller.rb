@@ -4,10 +4,14 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(permalink: params[:id])
-
     @comment = Comment.new
 
-    if @list&.public? || current_user&.can_see(@list)
+    private_list = List.find_by(secure_id: params[:id])
+
+    if private_list
+      @list = private_list
+      @title = "#{@list.title} / #{@list.user.username}"
+    elsif @list&.public? || current_user&.can_see(@list)
       @title = "#{@list.title} / #{@list.user.username}"
     else
       redirect_to root_path

@@ -61,6 +61,14 @@ $(function(){
     setListenersForAddingNewItem();
   });
 
+  $(".js-switch-list-status").change(function() {
+    if (this.value === "false") {
+      $(".private-link").show();
+    } else {
+      $(".private-link").hide();
+    }
+  });
+
   $("form.js-list-form").keydown(function (e) {
     // && !e.altKey gives us two awesome things:
     // -> option + enter for line breaks in description
@@ -85,7 +93,6 @@ $(function(){
     }
   });
 
-
   // Moves cursor to the end of a flex text when clicking or hitting enter
   // This doesn't work for tabbing in for some reason. TODO figure that out
   $("textarea.flex-text").focus(function() {
@@ -107,6 +114,16 @@ $(function(){
   $(".js-form-help").click(function(e) {
     e.preventDefault();
     $(".form-help").toggle();
+  });
+
+  $("#private_link").keydown(function (e) {
+    e.preventDefault();
+  });
+
+  $('#private_link').click(function() {
+    $(this).select();
+    document.execCommand('copy');
+    $(this).next().children().text("COPIED TO CLIPBOARD. Share wisely!");
   });
 });
 

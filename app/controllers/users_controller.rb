@@ -45,9 +45,12 @@ class UsersController < ApplicationController
   end
 
   def change_password
+    @title = "Change Password"
   end
 
   def update_password
+    @title = "Change Password"
+
     if @user.authenticate(user_params[:current_password])
       @user.password = user_params[:password]
       @user.password_confirmation = user_params[:password_confirmation]

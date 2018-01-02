@@ -28,9 +28,8 @@
       <% if @list.commenting? %>
 
         <% if @list.comments.present? %>
-          <h4 class="strikethrough comments">
-            <span>COMMENTS</span>
-          </h4>
+
+          <%= strikethrough_heading(text: "COMMENTS") %>
 
           <ul class="comments">
             <% @list.comments.each do |comment| %>
@@ -60,9 +59,7 @@
           </ul>
         <% end %>
 
-        <h4 class="strikethrough">
-          <span>ADD A NEW COMMENT</span>
-        </h4>
+        <%= strikethrough_heading(text: "ADD A NEW COMMENT") %>
 
         <%= form_for [@list, @comment] do |f| %>
           <%= f.text_area :body, class: "form-control input-lg comment-textarea" %>
