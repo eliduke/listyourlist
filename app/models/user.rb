@@ -25,8 +25,9 @@ class User < ActiveRecord::Base
       allow_blank: true
     }
 
-  validates_associated :lists
-  validates_associated :comments
+  # TODO get rid of soft deleting, remove soft deleted records, reimplement this:
+  # validates_associated :lists
+  # validates_associated :comments
 
   default_scope { where(deleted: false) }
 
