@@ -1,9 +1,11 @@
 function flexText(element) {
-  // Grabs existing textarea height
-  textAreaHeight = $(element).css("height").split("px")[0]
+  if ($(element).is(".description") && (element.scrollHeight > 100)) {
+    $(element).css('height', element.scrollHeight + 'px');
+  }
 
-  // Resizes if the scroll height exceeds existing textarea height
-  if (element.scrollHeight > textAreaHeight) {
+  textAreaHeight = $(element).css("height").split("px")[0];
+
+  if (!$(element).is(".description") && element.scrollHeight != textAreaHeight) {
     $(element).css('height', element.scrollHeight + 'px');
   }
 }
@@ -13,7 +15,7 @@ function flexTextAll() {
     // Resizes all existing textareas with current text
     flexText(element);
 
-    // Sets listener on all existing textareas for future text increases
+    // Sets listener on all existing textareas for future text adjustments
     $(element).on('input', function() {
       flexText(this);
     });
@@ -22,12 +24,12 @@ function flexTextAll() {
 
 function setListenersForAddingNewItem() {
   $(".links").on('cocoon:after-insert', function(e, newItemFields) {
-    // Sets correctly incremented placeholder text and moves focus
+    // Sets incremented placeholder text and moves focus
     textArea = newItemFields.find("textarea");
     textArea.attr("placeholder", "List Item " + $(".js-list-item").length);
     textArea.focus();
 
-    // Sets flexText listener on new textarea
+    // Sets flexText listener on the new textarea
     textArea.on('input', function() {
       flexText(this);
     });
