@@ -31,6 +31,6 @@ class List < ActiveRecord::Base
   end
 
   def private_link
-    "https://listyourlist.com/lists/#{secure_id}"
+    persisted? ? "https://listyourlist.com/lists/#{secure_id}" : nil
   end
 end

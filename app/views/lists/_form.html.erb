@@ -95,18 +95,16 @@
     </p>
   </div>
 
-  <% if action_name == "edit" || action_name == "update" %>
-    <div class="section private-link" <%= display_none_if(@list.public?) %>>
-      <%= strikethrough_heading(text: "Private Link") %>
+  <div class="section private-link" <%= display_none_if(@list.public?) %>>
+    <%= strikethrough_heading(text: "😶 Private Link 😶") %>
 
-      <%= text_field_tag "private_link", @list.private_link, class: "form-control input-md" %>
+    <%= text_field_tag "private_link", @list.private_link || "This will be created after you save 💃🏻", class: "form-control input-md" %>
 
-      <p class="private-help-text">
-        Use this link to share your private list with friends. It is not searchable by people or robots, but it is a public link so who ever has that link can see your private list.
-        <span></span>
-      </p>
-    </div>
-  <% end %>
+    <p class="private-help-text">
+      Use this link to share your private list with friends. It is not searchable by people or robots, but it is a public link so who ever has that link can see your private list.
+      <span></span>
+    </p>
+  </div>
 
   <div class="section">
     <%= f.submit "SAVE LIST", class: "btn btn-lg btn-block btn-lyl-primary" %>
