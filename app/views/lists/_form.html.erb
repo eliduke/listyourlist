@@ -1,14 +1,14 @@
 <div class="col-sm-7">
 
   <div class="form-group">
-    <%= f.label :title, class: "sr-only" %>
-    <%= f.text_area :title, class: "form-control input-lg flex-text", placeholder: "Title" %>
+    <%= f.label :title %>
+    <%= f.text_area :title, class: "form-control input-lg flex-text" %>
     <%= error_messages_for(@list, :title, "right") %>
   </div>
 
   <div class="form-group">
-    <%= f.label :description, class: "sr-only" %>
-    <%= f.text_area :description, class: "form-control input-lg description flex-text", placeholder: "Description (optional)" %>
+    <%= f.label :description, "Description (optional)" %>
+    <%= f.text_area :description, class: "form-control input-lg description flex-text" %>
   </div>
 
   <%= error_messages_for(@list, :items, "left") %>
