@@ -71,7 +71,7 @@ class ListsController < ApplicationController
       :ordered,
       :commenting,
       :public,
-      items_attributes: [:id, :body, :_destroy]
+      items_attributes: [:id, :body, :position, :_destroy]
     )
   end
 end

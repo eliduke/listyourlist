@@ -1,6 +1,8 @@
 <div class="nested-fields">
   <div class="field">
     <li>
+      <%= f.hidden_field :position, value: f.index.to_i + 1, class: "js-list-item-position" %>
+
       <div class="form-group">
         <%= f.text_area :body, class: "form-control input-lg flex-text item js-list-item", placeholder: "List Item #{f.index.to_i + 1}" %>
       </div>
