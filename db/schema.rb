@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180101210529) do
+ActiveRecord::Schema.define(version: 20180130220352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20180101210529) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "deleted", default: false, null: false
+    t.boolean "deleted"
   end
 
   create_table "items", id: :serial, force: :cascade do |t|
     t.integer "list_id"
-    t.string "body"
+    t.text "body"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20180101210529) do
     t.integer "hits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "deleted", default: false, null: false
     t.string "permalink"
     t.boolean "commenting", default: true, null: false
+    t.boolean "deleted"
     t.string "secure_id"
     t.index ["permalink"], name: "index_lists_on_permalink"
     t.index ["secure_id"], name: "index_lists_on_secure_id", unique: true
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20180101210529) do
     t.string "location"
     t.string "url"
     t.string "bio"
-    t.boolean "deleted", default: false, null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.boolean "deleted"
   end
 
 end
