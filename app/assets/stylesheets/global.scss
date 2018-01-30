@@ -64,9 +64,16 @@ input[type=checkbox] {
   .input-lg {
     height: 34px;
     padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
+    font-size: 16px;
+    line-height: 1.52857143;
   }
+}
+
+.jumptarget::before {
+  content: "";
+  display: block;
+  height: 90px; /* fixed header height*/
+  margin: -90px 0 0; /* negative fixed header height */
 }
 
 .y { letter-spacing: -2px }

@@ -20,10 +20,10 @@
 
       <ul class="list-group">
         <li class="list-group-item justify-content-between header">
-          YOUR PUBLIC LISTS (<%= @publics.size %>)
+          YOUR PUBLIC LISTS (<%= @publik_lists.size %>)
         </li>
-        <% if @publics.present? %>
-          <% @publics.each do |list| %>
+        <% if @publik_lists.present? %>
+          <% @publik_lists.each do |list| %>
             <li class="list-group-item justify-content-between">
               <span class="badge badge-pill badge-default">
                 <%= link_to edit_list_path(list) do %>
@@ -44,10 +44,32 @@
     <div class="col-sm-6">
       <ul class="list-group">
         <li class="list-group-item justify-content-between header">
-          YOUR PRIVATE LISTS (<%= @privates.size %>)
+          YOUR SECRET LISTS (<%= @secret_lists.size %>)
         </li>
-        <% if @privates.present? %>
-          <% @privates.each do |list| %>
+        <% if @secret_lists.present? %>
+          <% @secret_lists.each do |list| %>
+            <li class="list-group-item justify-content-between">
+              <span class="badge badge-pill badge-default">
+                <%= link_to edit_list_path(list) do %>
+                  <%= fa_icon "edit" %>
+                <% end %>
+              </span>
+              <%= link_to list.title, list_path(list), class: "list" %>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item justify-content-between">
+            You have no secret lists yet.
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item justify-content-between header">
+          YOUR PRIVATE LISTS (<%= @priv8_lists.size %>)
+        </li>
+        <% if @priv8_lists.present? %>
+          <% @priv8_lists.each do |list| %>
             <li class="list-group-item justify-content-between">
               <span class="badge badge-pill badge-default">
                 <%= link_to edit_list_path(list) do %>

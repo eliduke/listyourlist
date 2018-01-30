@@ -20,4 +20,8 @@ module ApplicationHelper
   def display_none_if(boolean)
     "style=display:none" if boolean
   end
+
+  def display_if(boolean)
+    "style=display:none" unless boolean
+  end
 end

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
-  has_many :lists
-  has_many :comments
-  has_many :likes
+  has_many :lists, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_secure_password
 
@@ -25,15 +25,14 @@ class User < ActiveRecord::Base
       allow_blank: true
     }
 
-  # TODO get rid of soft deleting, remove soft deleted records, reimplement this:
-  # validates_associated :lists
-  # validates_associated :comments
+  validates_associated :lists
+  validates_associated :comments
 
-  default_scope { where(deleted: false) }
-
-  def can_see(list)
-    lists.include?(list)
+  def owns?(list)
+    list.in?(lists)
   end
+
+  ### AUTHENTICATION STUFF, KEEP AT BOTTOM ###
 
   class << self
     def new_token
@@ -61,6 +60,10 @@ class User < ActiveRecord::Base
   end
 
   def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    if remember_digest && remember_token
+      BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    else
+      return false
+    end
   end
 end

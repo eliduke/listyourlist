@@ -1,11 +1,14 @@
 class List < ActiveRecord::Base
+  # 'public' and 'private' are reserved words
+  enum status: [:publik, :secret, :priv8]
+
   belongs_to :user
 
   has_many :comments, dependent: :destroy
   has_many :items, inverse_of: :list, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_secure_token :secure_id
+  has_secure_token :secret_id
 
   has_permalink
 
@@ -19,18 +22,7 @@ class List < ActiveRecord::Base
   validates_associated :items
   validates_associated :comments
 
-  ######## DEFAULT SCOPE ########
-  default_scope { where(deleted: false) }
-
-  # had to name these weird because of rails reserved words
-  scope :publics, ->  { where(public: true) }
-  scope :privates, -> { where(public: false) }
-
-  def private?
-    !public?
-  end
-
-  def private_link
-    persisted? ? "https://listyourlist.com/lists/#{secure_id}" : nil
+  def secret_link
+    (persisted? && secret?) ? "https://listyourlist.com/lists/#{secret_id}" : nil
   end
 end

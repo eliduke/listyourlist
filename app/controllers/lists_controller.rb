@@ -3,18 +3,21 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:edit, :update, :destroy]
 
   def show
-    @list = List.find_by(permalink: params[:id])
-    @comment = Comment.new
+    secret_list = List.find_by(secret_id: params[:id])
 
-    private_list = List.find_by(secure_id: params[:id])
-
-    if private_list
-      @list = private_list
+    if secret_list
+      @list = secret_list
       @title = "#{@list.title} / #{@list.user.username}"
-    elsif @list&.public? || current_user&.can_see(@list)
-      @title = "#{@list.title} / #{@list.user.username}"
+      @comment = Comment.new
     else
-      redirect_to root_path
+      @list = List.find_by(permalink: params[:id])
+      @comment = Comment.new
+
+      if @list&.publik? || current_user.owns?(@list)
+        @title = "#{@list.title} / #{@list.user.username}"
+      else
+        redirect_to root_path
+      end
     end
   end
 
@@ -42,7 +45,11 @@ class ListsController < ApplicationController
   end
 
   def update
+    before = @list.status
+    after = list_params[:status]
+
     if @list.update_attributes(list_params)
+      process_secret_id(before, after)
       redirect_to dashboard_path, notice: "Your list was updated. 🛠"
     else
       render :edit
@@ -63,6 +70,16 @@ class ListsController < ApplicationController
     @list = List.find_by!(user: current_user, permalink: params[:id])
   end
 
+  def process_secret_id(before, after)
+    if before != "secret" && after == "secret"
+      @list.regenerate_secret_id
+    end
+
+    if before == "secret" && after != "secret"
+      @list.update_attribute(:secret_id, nil)
+    end
+  end
+
   def list_params
     params.require(:list).permit(
       :user_id,
@@ -70,7 +87,7 @@ class ListsController < ApplicationController
       :description,
       :ordered,
       :commenting,
-      :public,
+      :status,
       items_attributes: [:id, :body, :_destroy]
     )
   end
