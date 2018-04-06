@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #list {
+  h2 {
+    margin-bottom: 40px;
+    font-size: 350%;
+  }
+
   p.description {
     color: #666;
   }
@@ -274,5 +279,5 @@ textarea.comment-textarea {
 }
 
 @media (min-width: 768px) {
-  .settings { margin-top: -52px }
+  .settings { margin-top: -22px }
 }

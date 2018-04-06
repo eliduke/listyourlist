@@ -1,84 +1,78 @@
 <div id="list">
-  <div class="row">
-    <div class="col-sm-7">
-      <h2><%= @list.title %></h2>
-      <%= simple_format(@list.description, class: "description") %>
+  <h2><%= @list.title %></h2>
+  <%= simple_format(@list.description, class: "description") %>
 
-      <!-- TODO make block helper for this ? -->
-      <<%= @list.ordered ? "o" : "u" %>l class="single_list">
-        <% @list.items.each do |item| %>
-          <li><%= item.body %></li>
-        <% end %>
-      </<%= @list.ordered ? "o" : "u" %>l>
+  <!-- TODO make block helper for this ? -->
+  <<%= @list.ordered ? "o" : "u" %>l class="single_list">
+    <% @list.items.each do |item| %>
+      <li><%= item.body %></li>
+    <% end %>
+  </<%= @list.ordered ? "o" : "u" %>l>
 
-      <!-- TODO make block helper for this ? -->
-      <p class="listed_by">
-        <% if editable_by_current_user?(@list, current_user) %>
-          <% if @list.private? %>
-            Privately listed
-          <% else %>
-            Listed
-          <% end %>
-          by <strong><%= link_to "YOU", profile_path(current_user.username) %></strong> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %> : <%= link_to "EDIT", edit_list_path(@list) %>
-        <% else %>
-          Listed by <%= link_to_user(@list.user) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %>
-        <% end %>
-      </p>
-
-      <% if @list.commenting? %>
-
-        <% if @list.comments.present? %>
-
-          <%= strikethrough_heading(text: "COMMENTS") %>
-
-          <ul class="comments">
-            <% @list.comments.each do |comment| %>
-              <li id="comment_<%= comment.id %>">
-                <span class="comment">
-                  <%= simple_format(comment.body) %>
-                </span>
-
-                <!-- TODO make block helper for this ? -->
-                <p class="commented_by">
-                  posted by <%= link_to comment.user.username, profile_path(comment.user.username) %>
-
-                  <% if comment.more_than_one_week_old? %>
-                    on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %>
-                  <% else %>
-                    <%= time_ago_in_words(comment.created_at) %> ago
-                  <% end %>
-
-                  <% if current_user && current_user == comment.user  %>
-                    | <%= link_to list_comment_path(@list, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } do %>
-                      <%= fa_icon "trash-o" %>
-                    <% end %>
-                  <% end %>
-                </p>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <%= strikethrough_heading(text: "ADD A NEW COMMENT") %>
-
-        <%= form_for [@list, @comment] do |f| %>
-          <%= f.text_area :body, class: "form-control input-lg comment-textarea" %>
-          <%= f.submit "SAVE COMMENT", class: "btn btn-lg btn-block btn-lyl-primary" %>
-        <% end %>
+  <!-- TODO make block helper for this ? -->
+  <p class="listed_by">
+    <% if editable_by_current_user?(@list, current_user) %>
+      <% if @list.private? %>
+        Privately listed
+      <% else %>
+        Listed
       <% end %>
-    </div>
+      by <strong><%= link_to "YOU", profile_path(current_user.username) %></strong> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %> : <%= link_to "EDIT", edit_list_path(@list) %>
+    <% else %>
+      Listed by <%= link_to_user(@list.user) %> on <%= @list.created_at.strftime("%B #{@list.created_at.day.ordinalize}, %Y") %>
+    <% end %>
+  </p>
 
-    <div class="col-sm-5">
-      <ul class="list-group">
-        <li class="list-group-item justify-content-between header">
-          <%= @list.user.username %>
-        </li>
-        <% @list.user.lists.publics.reverse.each do |list| %>
-          <li class="list-group-item justify-content-between">
-            <%= link_to_unless_current list.title, list_path(list), class: "list" %>
+  <% if @list.commenting? %>
+
+    <% if @list.comments.present? %>
+
+      <%= strikethrough_heading(text: "COMMENTS") %>
+
+      <ul class="comments">
+        <% @list.comments.each do |comment| %>
+          <li id="comment_<%= comment.id %>">
+            <span class="comment">
+              <%= simple_format(comment.body) %>
+            </span>
+
+            <!-- TODO make block helper for this ? -->
+            <p class="commented_by">
+              posted by <%= link_to comment.user.username, profile_path(comment.user.username) %>
+
+              <% if comment.more_than_one_week_old? %>
+                on <%= comment.created_at.strftime("%B #{comment.created_at.day.ordinalize}, %Y") %>
+              <% else %>
+                <%= time_ago_in_words(comment.created_at) %> ago
+              <% end %>
+
+              <% if current_user && current_user == comment.user  %>
+                | <%= link_to list_comment_path(@list, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } do %>
+                  <%= fa_icon "trash-o" %>
+                <% end %>
+              <% end %>
+            </p>
           </li>
         <% end %>
       </ul>
-    </div>
-  </div>
+    <% end %>
+
+    <%= strikethrough_heading(text: "ADD A NEW COMMENT") %>
+
+    <%= form_for [@list, @comment] do |f| %>
+      <%= f.text_area :body, class: "form-control input-lg comment-textarea" %>
+      <%= f.submit "SAVE COMMENT", class: "btn btn-lg btn-block btn-lyl-primary" %>
+    <% end %>
+  <% end %>
+
+  <ul class="list-group">
+    <li class="list-group-item justify-content-between header">
+      <%= @list.user.username %>
+    </li>
+    <% @list.user.lists.publics.reverse.each do |list| %>
+      <li class="list-group-item justify-content-between">
+        <%= link_to_unless_current list.title, list_path(list), class: "list" %>
+      </li>
+    <% end %>
+  </ul>
 </div>
