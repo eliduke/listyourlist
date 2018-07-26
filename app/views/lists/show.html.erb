@@ -71,7 +71,10 @@
 
         <%= form_for [@list, @comment] do |f| %>
           <%= f.text_area :body, class: "form-control input-lg comment-textarea" %>
-          <p class="comment-help-text">There are not two of you: Internet you and Real you. There is only one of you. If you're not kind on the Internet, then you're not kind.</p>
+          <p class="comment-help-text">
+            <em>There is only one of you. There is no "internet self" and "real self." If you're not kind on the internet, then you're not kind.</em> -
+            <a href="https://twitter.com/glennondoyle/status/522526229761904640" class="mellow" target="_blank">Glennon Doyle</a>
+          </p>
           <%= f.submit "SAVE COMMENT", class: "btn btn-lg btn-block btn-lyl-primary" %>
         <% end %>
       <% end %>

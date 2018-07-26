@@ -288,11 +288,11 @@ textarea.comment-textarea {
 }
 
 @media (max-width: 767px) {
-  .stat { display: none }
   h2 { font-size: 170% }
+  .stat { display: none }
   .settings { margin-top: 30px }
 }
 
 @media (min-width: 768px) {
-  .settings { margin-top: -52px }
+  .settings { margin-top: -23px }
 }

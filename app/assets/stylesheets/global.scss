@@ -23,6 +23,16 @@ a:hover {
 	text-decoration: none;
 }
 
+a.mellow {
+	color: $pink-light;
+	text-decoration: none;
+}
+
+a.mellow:hover {
+	color: $pink;
+	text-decoration: underline;
+}
+
 h2 {
   margin: 0 0 10px 0;
 	color: $dark;
