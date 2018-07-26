@@ -24,6 +24,10 @@ function flexTextAll() {
 
 function setListenersForAddingNewItem() {
   $(".links").on('cocoon:after-insert', function(e, newItemFields) {
+    // Sets list item position value, TODO make this better?
+    hiddenPosition = newItemFields.find(".js-list-item-position");
+    hiddenPosition.val($(".js-list-item").length);
+
     // Sets incremented placeholder text and moves focus
     textArea = newItemFields.find("textarea");
     textArea.attr("placeholder", "List Item " + $(".js-list-item").length);

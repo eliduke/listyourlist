@@ -88,7 +88,7 @@ class ListsController < ApplicationController
       :ordered,
       :commenting,
       :status,
-      items_attributes: [:id, :body, :_destroy]
+      items_attributes: [:id, :body, :position, :_destroy]
     )
   end
 end

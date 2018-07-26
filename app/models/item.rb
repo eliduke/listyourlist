@@ -4,5 +4,5 @@ class Item < ActiveRecord::Base
   default_scope { order(:position) }
 
   validates :body, presence: true
-  validates :body, length: { maximum: 255 }
+  validates :body, length: { maximum: 500 }
 end
