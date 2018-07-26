@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20180130220352) do
     t.string "bio"
     t.string "password_digest"
     t.string "remember_digest"
-    t.boolean "deleted"
   end
 
 end
