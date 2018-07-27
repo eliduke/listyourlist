@@ -52,9 +52,9 @@ $(function(){
     });
 
     if (this.value === "false") {
-      $("#list ol").replaceWith($('<ul id="items">'+$("#list ol").html()+'</ul>'));
+      $(".list ol").replaceWith($('<ul id="items">'+$(".list ol").html()+'</ul>'));
     } else {
-      $("#list ul").replaceWith($('<ol id="items">'+$("#list ul").html()+'</ol>'));
+      $(".list ul").replaceWith($('<ol id="items">'+$(".list ul").html()+'</ol>'));
     }
 
     $('.js-list-item').each(function(index) {
@@ -68,10 +68,21 @@ $(function(){
   });
 
   $(".js-switch-list-status").change(function() {
-    if (this.value === "false") {
-      $(".private-link").show();
-    } else {
-      $(".private-link").hide();
+    if (this.value === "publik") {
+      $(".status-help-text-publik").show();
+      $(".status-help-text-secret").hide();
+      $(".status-help-text-priv8").hide();
+      $(".secret-link").hide();
+    } else if (this.value === "secret") {
+      $(".status-help-text-publik").hide();
+      $(".status-help-text-secret").show();
+      $(".status-help-text-priv8").hide();
+      $(".secret-link").show();
+    } else if (this.value === "priv8") {
+      $(".status-help-text-publik").hide();
+      $(".status-help-text-secret").hide();
+      $(".status-help-text-priv8").show();
+      $(".secret-link").hide();
     }
   });
 
@@ -110,7 +121,7 @@ $(function(){
 
   // Highlights all text in a field when tabbing into it because the above
   // function isn't working for tabbing. Figured this was better than nothing.
-  $("form.js-list-form").keyup(function (e) {
+  $("form.js-list-form").keyup(function(e) {
     if (e.which == 9) {
       $(document.activeElement).select();
     }
@@ -122,15 +133,39 @@ $(function(){
     $(".form-help").toggle();
   });
 
-  $("#private_link").keydown(function (e) {
+  $("#private_link").keydown(function(e) {
     e.preventDefault();
   });
 
-  $('#private_link').click(function() {
-    $(this).select();
+  $('#secret_link').click(function() {
+    input = this
+    iOS = navigator.userAgent.match(/ipad|iphone/i);
+
+    if (iOS) {
+      editable = input.contentEditable;
+      readOnly = input.readOnly;
+
+      input.contentEditable = true;
+      input.readOnly = false;
+
+      range = document.createRange();
+      range.selectNodeContents(input);
+
+      selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      input.setSelectionRange(0, 999999);
+      input.contentEditable = editable;
+      input.readOnly = readOnly;
+    } else {
+      input.select();
+    }
+
     document.execCommand('copy');
-    $(this).next().children().text("COPIED TO CLIPBOARD. Share wisely!");
+    $(input).next().text("COPIED! 👍🏼 Share wisely.");
   });
+
 });
 
 // TODO I want smarter item delete confirmation dialogues.

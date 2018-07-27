@@ -80,29 +80,42 @@
     <%= strikethrough_heading(text: "Status") %>
 
     <div class="options">
-      <label>
-        <%= f.radio_button :public, true, checked: true, class: "js-switch-list-status"  %>
+      <label class="status">
+        <%= f.radio_button :status, "publik", checked: true, class: "js-switch-list-status"  %>
         <span>Public</span>
       </label>
-      <label>
-        <%= f.radio_button :public, false, class: "js-switch-list-status"  %>
+      <label class="status">
+        <%= f.radio_button :status, "secret", class: "js-switch-list-status"  %>
+        <span>Secret</span>
+      </label>
+      <label class="status">
+        <%= f.radio_button :status, "priv8", class: "js-switch-list-status"  %>
         <span>Private</span>
       </label>
     </div>
 
     <p class="status-help-text">
-      Public lists are visible to people and robots (search engine spiders). Private lists are only visible to you (when logged in) and anyone with the private link (after saving).
+      <span class="status-help-text-publik" <%= display_if(@list.publik?) %>>
+        Public lists are visible to everyone, even robots (search engines).
+      </span>
+
+      <span class="status-help-text-secret" <%= display_if(@list.secret?) %>>
+        Secret lists are visible only with the link below. They are not searchable by people or robots, but anyone with the Secret Link can see your secret list.
+      </span>
+
+      <span class="status-help-text-priv8" <%= display_if(@list.priv8?) %>>
+        Private lists are only visible to you (when you're logged in).
+      </span>
     </p>
   </div>
 
-  <div class="section private-link" <%= display_none_if(@list.public?) %>>
-    <%= strikethrough_heading(text: "😶 Private Link 😶") %>
+  <div class="section secret-link" <%= display_if(@list.secret?) %>>
+    <%= strikethrough_heading(text: "😶 Secret Link 😶") %>
 
-    <%= text_field_tag "private_link", @list.private_link || "This will be created after you save 💃🏻", class: "form-control input-md" %>
+    <%= text_field_tag "secret_link", @list.secret_link || "Check back here after you save 💃🏻", readonly: !@list.secret?, class: "form-control input-lg" %>
 
-    <p class="private-help-text">
-      Use this link to share your private list with friends. It is not searchable by people or robots, but it is a public link so who ever has that link can see your private list.
-      <span></span>
+    <p class="secret-help-text" <%= display_if(@list.secret?) %>>
+      Click the link to copy it
     </p>
   </div>
 

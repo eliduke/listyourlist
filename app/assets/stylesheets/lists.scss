@@ -3,11 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #list {
-  h2 {
-    margin-bottom: 40px;
-    font-size: 350%;
-  }
-
   p.description {
     color: #666;
   }
@@ -54,13 +49,17 @@
   }
 
   ul.comments li {
-    padding: 20px;
-    margin: 20px 0;
+    padding: 30px 20px;
+    margin: 0 20px;
     font-size: 100%;
   }
 
   ul.comments li:first-of-type {
-    margin-top: 40px;
+    margin-top: 20px;
+  }
+
+  ul.comments li:last-of-type {
+    margin-bottom: 20px;
   }
 
   ul.comments li:nth-child(odd) {
@@ -68,11 +67,27 @@
   }
 
   ul.comments li:nth-child(even) {
-    background-color: #fff;
+    background-color: #FFF;
   }
 
-  form { margin-bottom: 40px }
-  textarea { margin-top: 10px }
+  form {
+    margin-bottom: 40px;
+
+    textarea { margin-top: 10px }
+
+    p.comment-help-text {
+      color: #ccc;
+      font-size: 90%;
+      margin: -15px 0 20px 0;
+    }
+  }
+
+  .secret-or-private {
+    margin: 10px 0;
+    padding: 10px;
+    background: $alert-success;
+    border: 2px solid $pink;
+  }
 }
 
 #lists {
@@ -105,8 +120,8 @@
     @media (max-width: 350px) {
       height: 34px;
       padding: 6px 12px;
-      font-size: 14px;
-      line-height: 1.42857143;
+      font-size: 16px;
+      line-height: 1.36857143;
     }
   }
 
@@ -178,20 +193,16 @@
 
       p.status-help-text {
         color: #ccc;
-        font-size: 80%;
+        font-size: 90%;
         margin: -30px 0 40px 0;
       }
 
-      p.private-help-text {
-        color: #ccc;
-        font-size: 80%;
+      p.secret-help-text {
+        color: $pink;
+        font-size: 110%;
         margin: 5px 0 40px 0;
-
-        span {
-          margin-top: 10px;
-          display: block;
-          font-weight: bold;
-        }
+        font-weight: bold;
+        text-align: center;
       }
     }
   }
@@ -208,6 +219,10 @@
       font-weight: normal;
       cursor: pointer;
       color: $dark;
+
+      &.status {
+        width: 32.25%;
+      }
 
       &:hover {
         background-color: #ddd;
@@ -273,8 +288,8 @@ textarea.comment-textarea {
 }
 
 @media (max-width: 767px) {
-  .stat { display: none }
   h2 { font-size: 170% }
+  .stat { display: none }
   .settings { margin-top: 30px }
 }
 

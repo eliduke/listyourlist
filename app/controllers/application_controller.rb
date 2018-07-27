@@ -10,9 +10,13 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find_by(id: user_id)
     elsif user_id = cookies.signed[:user_id]
       user = User.find_by(id: user_id)
+
       if user && user.authenticated?(cookies[:remember_token])
         helpers.login user
         @current_user ||= user
+      # else
+      #   helpers.logout
+      #   redirect_to login_path, alert: "There was a problem logging you in. Please try again."
       end
     end
   end

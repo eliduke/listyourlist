@@ -13,7 +13,7 @@
         <li class="list-group-item justify-content-between header">
           Lists
         </li>
-        <% @user.lists.publics.order(created_at: :desc).each do |list| %>
+        <% @user.lists.publik.order(created_at: :desc).each do |list| %>
           <li class="list-group-item justify-content-between">
             <%= link_to list.title, list_path(list), class: "list" %>
           </li>

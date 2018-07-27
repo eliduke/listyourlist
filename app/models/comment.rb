@@ -2,8 +2,6 @@ class Comment < ActiveRecord::Base
   belongs_to :list
   belongs_to :user
 
-  default_scope { where(deleted: false) }
-
   def editable?
     Time.now.to_i - created_at.to_i < 3600
   end

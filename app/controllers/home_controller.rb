@@ -3,9 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @title = "Pointless List-Making at its Finest"
-    @lists_new = List.publics.order(created_at: :desc).limit(14)
-    @lists_activity = List.publics.where(id: Comment.order(created_at: :desc).limit(14).map(&:list_id).uniq)
-    @lists_popular = List.publics.order(hits: :desc).limit(14)
+    @lists_new = List.publik.order(created_at: :desc).limit(14)
+    @lists_activity = List.publik.where(id: Comment.order(created_at: :desc).limit(14).map(&:list_id).uniq)
+    @lists_popular = List.publik.order(hits: :desc).limit(14)
   end
 
   def about
@@ -14,8 +14,9 @@ class HomeController < ApplicationController
 
   def dashboard
     @title = "Dashboard / Admin"
-    @publics = current_user.lists.publics.order(created_at: :desc)
-    @privates = current_user.lists.privates.order(created_at: :desc)
+    @publik_lists = current_user.lists.publik.order(created_at: :desc)
+    @secret_lists = current_user.lists.secret.order(created_at: :desc)
+    @priv8_lists = current_user.lists.priv8.order(created_at: :desc)
   end
 
   def seed
